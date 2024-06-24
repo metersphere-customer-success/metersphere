@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.metersphere.api.dto.definition.ApiDefinitionResult;
+import io.metersphere.api.parse.api.ApiDefinitionImport;
 import io.metersphere.base.domain.*;
 import io.metersphere.base.mapper.ApiModuleMapper;
 import io.metersphere.base.mapper.ApiTestCaseMapper;
+import io.metersphere.base.mapper.EsbApiParamsMapper;
 import io.metersphere.commons.constants.NoticeConstants;
 import io.metersphere.commons.constants.ProjectModuleDefaultNodeEnum;
 import io.metersphere.commons.constants.PropertyConstant;
@@ -23,6 +25,7 @@ import io.metersphere.xpack.api.service.ApiDefinitionSyncService;
 import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -411,5 +414,23 @@ public class ApiDefinitionImportUtil {
         oldCaseMap = caseWithBLOBs.stream().collect(Collectors.groupingBy(ApiTestCase::getApiDefinitionId));
         return oldCaseMap;
     }
+
+    public static void delEsbData(ApiDefinitionImport apiImport, SqlSession sqlSession) {
+        if (apiImport.getEsbApiParamsMap() != null && apiImport.getEsbApiParamsMap().size() > 0) {
+            EsbApiParamsMapper esbApiParamsMapper = sqlSession.getMapper(EsbApiParamsMapper.class);
+            for (EsbApiParamsWithBLOBs model : apiImport.getEsbApiParamsMap().values()) {
+                EsbApiParamsExample example = new EsbApiParamsExample();
+                example.createCriteria().andResourceIdEqualTo(model.getResourceId());
+                List<EsbApiParamsWithBLOBs> exitModelList = esbApiParamsMapper.selectByExampleWithBLOBs(example);
+                if (exitModelList.isEmpty()) {
+                    esbApiParamsMapper.insert(model);
+                } else {
+                    model.setId(exitModelList.get(0).getId());
+                    esbApiParamsMapper.updateByPrimaryKeyWithBLOBs(model);
+                }
+            }
+        }
+    }
+
 
 }

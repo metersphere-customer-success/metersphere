@@ -7,6 +7,7 @@ import io.metersphere.base.domain.*;
 import io.metersphere.base.mapper.ApiDefinitionMapper;
 import io.metersphere.base.mapper.ApiModuleMapper;
 import io.metersphere.base.mapper.ProjectMapper;
+import io.metersphere.base.mapper.ApiTestCaseMapper;
 import io.metersphere.base.mapper.ext.ExtApiDefinitionMapper;
 import io.metersphere.base.mapper.ext.ExtApiModuleMapper;
 import io.metersphere.base.mapper.ext.ExtApiTestCaseMapper;
@@ -583,6 +584,8 @@ public class ApiModuleService extends NodeTreeService<ApiModuleDTO> {
         if (protocol.equals("HTTP")) {
             return dealHttp(apiImportParamDto);
         } else {
+            Map<String, EsbApiParamsWithBLOBs> esbApiParamsMap = apiImport.getEsbApiParamsMap();
+            apiImportParamDto.setEsbApiParamsMap(esbApiParamsMap);
             return delOtherProtocol(apiImportParamDto);
         }
 
@@ -676,6 +679,11 @@ public class ApiModuleService extends NodeTreeService<ApiModuleDTO> {
     private Boolean getFullCoverage(Boolean fullCoverage) {
         if (fullCoverage == null) {
             fullCoverage = false;
+        }
+
+        //标准版ESB数据导入不区分是否覆盖，默认都为覆盖
+        if (apiImport.getEsbApiParamsMap() != null) {
+            fullCoverage = true;
         }
         return fullCoverage;
     }

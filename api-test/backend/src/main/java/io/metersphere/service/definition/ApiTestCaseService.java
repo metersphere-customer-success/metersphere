@@ -84,6 +84,8 @@ public class ApiTestCaseService {
     @Resource
     private ApiDefinitionExecResultMapper apiDefinitionExecResultMapper;
     @Resource
+    private EsbApiParamService esbApiParamService;
+    @Resource
     private ExtApiScenarioMapper extApiScenarioMapper;
     @Resource
     private ApiTestEnvironmentMapper apiTestEnvironmentMapper;
@@ -134,7 +136,13 @@ public class ApiTestCaseService {
             moduleIds.add(request.getModuleId());
             request.setModuleIds(moduleIds);
         }
-        return extApiTestCaseMapper.list(request);
+        List<ApiTestCaseResult> returnList = extApiTestCaseMapper.list(request);
+        for (ApiTestCaseResult res : returnList) {
+            if (StringUtils.equalsIgnoreCase(res.getApiMethod(), "esb")) {
+                esbApiParamService.handleApiEsbParams(res);
+            }
+        }
+        return returnList;
     }
 
     public List<ApiTestCase> selectByIds(ApiTestCaseRequest request) {
@@ -284,7 +292,13 @@ public class ApiTestCaseService {
     }
 
     public ApiTestCaseInfo get(String id) {
-        return extApiTestCaseMapper.selectApiCaseInfoByPrimaryKey(id);
+        ApiTestCaseInfo model = extApiTestCaseMapper.selectApiCaseInfoByPrimaryKey(id);
+        if (model != null) {
+            if (StringUtils.equalsIgnoreCase(model.getApiMethod(), "esb")) {
+                esbApiParamService.handleApiEsbParams(model);
+            }
+        }
+        return model;
     }
 
     public List<ApiTestCaseInfo> selectByCaseIds(List<String> ids) {
@@ -336,6 +350,7 @@ public class ApiTestCaseService {
         testPlanApiCaseService.deleteByCaseId(testId);
         extApiDefinitionExecResultMapper.deleteByResourceId(testId);
         apiTestCaseMapper.deleteByPrimaryKey(testId);
+        esbApiParamService.deleteByResourceId(testId);
         // 删除附件关系
         extFileAssociationService.deleteByResourceId(testId);
         deleteFollows(testId);
@@ -406,6 +421,10 @@ public class ApiTestCaseService {
     private ApiTestCase updateTest(SaveApiTestCaseRequest request) {
         checkNameExist(request);
         request.setRequest(tcpApiParamService.parseMsTestElement(request.getRequest()));
+        if (StringUtils.isNotEmpty(request.getEsbDataStruct())) {
+            request = esbApiParamService.handleEsbRequest(request);
+        }
+
         final ApiTestCaseWithBLOBs test = apiTestCaseMapper.selectByPrimaryKey(request.getId());
         if (test != null) {
             String requestOrg = test.getRequest();
@@ -472,6 +491,11 @@ public class ApiTestCaseService {
             request.getRequest().setEnable(true);
         }
         request.setRequest(tcpApiParamService.parseMsTestElement(request.getRequest()));
+        if (StringUtils.isNotEmpty(request.getEsbDataStruct()) || StringUtils.isNotEmpty(request.getBackEsbDataStruct())) {
+            request = esbApiParamService.handleEsbRequest(request);
+        }
+        FileUtils.copyBdyFile(request.getApiDefinitionId(), request.getId());
+
         if (StringUtils.isNotBlank(request.getSourceIdByCopy())) {
             ApiFileUtil.copyBdyFile(request.getSourceIdByCopy(), request.getId());
         } else {
@@ -660,6 +684,11 @@ public class ApiTestCaseService {
 
     public Map<String, String> getRequest(ApiTestCaseRequest request) {
         List<ApiTestCaseInfo> list = extApiTestCaseMapper.getRequest(request);
+        for (ApiTestCaseInfo model : list) {
+            if (StringUtils.equalsIgnoreCase(model.getApiMethod(), "esb")) {
+                esbApiParamService.handleApiEsbParams(model);
+            }
+        }
         return list.stream().collect(Collectors.toMap(ApiTestCaseWithBLOBs::getId, ApiTestCaseWithBLOBs::getRequest));
     }
 
@@ -870,6 +899,11 @@ public class ApiTestCaseService {
                     item.setRequest(jsonObject.toString());
                 }
             });
+        }
+        for (ApiTestCaseInfo model : list) {
+            if (StringUtils.equalsIgnoreCase(model.getApiMethod(), "esb")) {
+                esbApiParamService.handleApiEsbParams(model);
+            }
         }
         // 排序
         FixedOrderComparator<String> fixedOrderComparator = new FixedOrderComparator<String>(request.getIds());

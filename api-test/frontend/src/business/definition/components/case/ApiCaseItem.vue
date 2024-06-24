@@ -298,6 +298,8 @@ export default {
     MsChangeHistory,
     ApiCaseHeader,
     MsApiReportStatus: () => import('../../../automation/report/ApiReportStatus'),
+    MxEsbDefinition: () => import('@/business/definition/components/esb/MxEsbDefinition'),
+    MxEsbDefinitionResponse: () => import('@/business/definition/components/esb/MxEsbDefinitionResponse'),
   },
   data() {
     return {

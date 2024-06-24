@@ -54,6 +54,7 @@ import io.metersphere.sechedule.ApiScenarioTestJob;
 import io.metersphere.sechedule.SwaggerUrlImportJob;
 import io.metersphere.service.*;
 import io.metersphere.service.definition.ApiTestCaseService;
+import io.metersphere.service.definition.EsbApiParamService;
 import io.metersphere.service.definition.TcpApiParamService;
 import io.metersphere.service.ext.ExtApiScheduleService;
 import io.metersphere.service.ext.ExtFileAssociationService;
@@ -112,6 +113,8 @@ public class ApiScenarioService {
     private SqlSessionFactory sqlSessionFactory;
     @Resource
     private ApiScenarioReportMapper apiScenarioReportMapper;
+    @Resource
+    private EsbApiParamService esbApiParamService;
     @Resource
     private UserMapper userMapper;
     @Resource
@@ -299,6 +302,8 @@ public class ApiScenarioService {
         scenario.setOrder(ServiceUtils.getNextOrder(scenario.getProjectId(), extApiScenarioMapper::getLastOrder));
         scenario.setRefId(request.getId());
         scenario.setLatest(true);
+        //检查场景的请求步骤。如果含有ESB请求步骤的话，要做参数计算处理。
+        esbApiParamService.checkScenarioRequests(request);
 
         apiScenarioMapper.insert(scenario);
         apiScenarioReferenceIdService.saveApiAndScenarioRelation(scenario);
@@ -375,6 +380,9 @@ public class ApiScenarioService {
     public ApiScenarioWithBLOBs update(SaveApiScenarioRequest request, List<MultipartFile> bodyFiles, List<MultipartFile> scenarioFiles) {
         checkNameExist(request, false);
         checkScenarioNum(request);
+
+        //检查场景的请求步骤。如果含有ESB请求步骤的话，要做参数计算处理。
+        esbApiParamService.checkScenarioRequests(request);
         //如果场景有TCP步骤的话，也要做参数计算处理
         tcpApiParamService.checkTestElement(request.getScenarioDefinition());
         final ApiScenarioWithBLOBs scenario = buildSaveScenario(request);

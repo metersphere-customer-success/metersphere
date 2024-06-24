@@ -128,8 +128,17 @@
               :headers="request.headers"
               :is-read-only="isCompReadOnly"
               :request="request" />
+            <mx-esb-definition
+              v-if="request.esbDataStruct != null"
+              v-xpack
+              :request="request"
+              :response="response"
+              :showScript="true"
+              :show-pre-script="true"
+              :is-read-only="isCompReadOnly"
+              ref="esbDefinition" />
             <ms-tcp-format-parameters
-              v-if="request.protocol === 'TCP' || request.protocol === 'ESB' || request.type === 'TCPSampler'"
+              v-if="(request.protocol === 'TCP' || request.type === 'TCPSampler') && request.esbDataStruct == null"
               :is-read-only="isCompReadOnly"
               :response="response"
               :show-pre-script="true"
@@ -159,7 +168,18 @@
       <template v-slot:result>
         <div v-loading="loading">
           <p class="tip">{{ $t('api_test.definition.request.res_param') }}</p>
-          <el-tabs
+          <div v-if="request.backEsbDataStruct != null">
+            <mx-esb-definition-response
+              :currentProtocol="request.protocol"
+              :request="request"
+              :is-api-component="false"
+              :show-options-button="false"
+              :show-header="true"
+              :result="request.requestResult"
+              v-xpack />
+          </div>
+          <div v-else>
+            <el-tabs
             v-model="request.activeName"
             closable
             class="ms-tabs"
@@ -237,6 +257,9 @@ export default {
     MsDubboBasisParameters: () => import('../../../definition/components/request/dubbo/BasisParameters'),
     MsApiRequestForm: () => import('../../../definition/components/request/http/ApiHttpRequestForm'),
     MsRequestResultTail: () => import('../../../definition/components/response/RequestResultTail'),
+    MsRun: () => import('../../../definition/components/Run'),
+    MxEsbDefinition: () => import('@/business/definition/components/esb/MxEsbDefinition'),
+    MxEsbDefinitionResponse: () => import('@/business/definition/components/esb/MxEsbDefinitionResponse'),
   },
   data() {
     return {

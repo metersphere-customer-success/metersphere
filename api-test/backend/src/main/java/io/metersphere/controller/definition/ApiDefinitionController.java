@@ -35,12 +35,16 @@ import io.metersphere.security.CheckOwner;
 import io.metersphere.service.definition.ApiDefinitionService;
 import io.metersphere.service.definition.FunctionRunService;
 import jakarta.annotation.Resource;
+import io.metersphere.service.definition.EsbApiParamService;
+import io.metersphere.service.definition.EsbImportService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
@@ -49,6 +53,10 @@ import java.util.List;
 public class ApiDefinitionController {
     @Resource
     private ApiDefinitionService apiDefinitionService;
+    @Resource
+    private EsbApiParamService esbApiParamService;
+    @Resource
+    private EsbImportService esbImportService;
     @Resource
     private BaseEnvironmentService apiTestEnvironmentService;
     @Resource
@@ -133,6 +141,15 @@ public class ApiDefinitionController {
     @CheckOwner(resourceId = "#ids", resourceType = "api_definition")
     public void deleteBatch(@RequestBody List<String> ids) {
         apiDefinitionService.deleteBatch(ids);
+    }
+
+    @PostMapping(value = "/updateEsbRequest")
+    public SaveApiDefinitionRequest updateEsbRequest(@RequestBody SaveApiDefinitionRequest request) {
+        if (StringUtils.equals(request.getMethod(), "ESB")) {
+            //ESB的接口类型数据，采用TCP方式去发送。并将方法类型改为TCP。 并修改发送数据
+            request = esbApiParamService.updateEsbRequest(request);
+        }
+        return request;
     }
 
     @PostMapping("/del-batch")
@@ -321,6 +338,12 @@ public class ApiDefinitionController {
     @PostMapping("/schema-json")
     public String schemaToJson(@RequestBody String jsonSchema) {
         return JSONSchemaParser.schemaToJson(jsonSchema);
+    }
+
+    @GetMapping("/export-esb-template")
+    @RequiresPermissions(PermissionConstants.PROJECT_API_DEFINITION_READ_EXPORT_API)
+    public void testCaseTemplateExport(HttpServletResponse response) {
+        esbImportService.templateExport(response);
     }
 
     @GetMapping("/mock-environment/{projectId}")

@@ -125,6 +125,8 @@ public class ApiDefinitionService {
     @Resource
     private ApiTestCaseMapper apiTestCaseMapper;
     @Resource
+    private EsbApiParamService esbApiParamService;
+    @Resource
     private TcpApiParamService tcpApiParamService;
     @Resource
     private ApiModuleMapper apiModuleMapper;
@@ -146,6 +148,8 @@ public class ApiDefinitionService {
     private BaseProjectApplicationService projectApplicationService;
     @Resource
     private BaseProjectService baseProjectService;
+    @Resource
+    private EsbApiParamsMapper esbApiParamsMapper;
     @Resource
     private ApiExecutionInfoService apiExecutionInfoService;
     @Lazy
@@ -524,6 +528,7 @@ public class ApiDefinitionService {
             apiTestCaseService.deleteTestCase(api.getId());
             extApiDefinitionExecResultMapper.deleteByResourceId(api.getId());
             apiDefinitionMapper.deleteByPrimaryKey(api.getId());
+            esbApiParamService.deleteByResourceId(api.getId());
             MockConfigService mockConfigService = CommonBeanFactory.getBean(MockConfigService.class);
             mockConfigService.deleteMockConfigByApiId(api.getId());
             // 删除自定义字段关联关系
@@ -546,6 +551,7 @@ public class ApiDefinitionService {
     public void deleteBatch(List<String> apiIds) {
         ApiDefinitionExample example = new ApiDefinitionExample();
         example.createCriteria().andIdIn(apiIds);
+        esbApiParamService.deleteByResourceIdIn(apiIds);
         apiDefinitionMapper.deleteByExample(example);
         apiTestCaseService.deleteBatchByDefinitionId(apiIds);
         // 删除附件关系
@@ -791,7 +797,10 @@ public class ApiDefinitionService {
 
     private ApiDefinitionWithBLOBs updateTest(SaveApiDefinitionRequest request) {
         checkNameExist(request, false);
-        if (StringUtils.equals(request.getMethod(), "TCP")) {
+        if (StringUtils.equals(request.getMethod(), "ESB")) {
+            //ESB的接口类型数据，采用TCP方式去发送。并将方法类型改为TCP。 并修改发送数据
+            request = esbApiParamService.handleEsbRequest(request);
+        } else if (StringUtils.equals(request.getMethod(), "TCP")) {
             request = tcpApiParamService.handleTcpRequest(request);
         }
         final ApiDefinitionWithBLOBs test = new ApiDefinitionWithBLOBs();
@@ -954,6 +963,10 @@ public class ApiDefinitionService {
             }
         }
         checkNameExist(request, false);
+        if (StringUtils.equals(request.getMethod(), "ESB")) {
+            //ESB的接口类型数据，采用TCP方式去发送。并将方法类型改为TCP。 并修改发送数据
+            request = esbApiParamService.handleEsbRequest(request);
+        }
         final ApiDefinitionWithBLOBs test = new ApiDefinitionWithBLOBs();
         test.setId(request.getId());
         test.setName(request.getName());
@@ -1421,6 +1434,9 @@ public class ApiDefinitionService {
                     res.setCaseType(API_CASE);
                     res.setCaseTotal("0");
                 }
+                if (StringUtils.equalsIgnoreCase("esb", res.getMethod())) {
+                    esbApiParamService.handleApiEsbParams(res);
+                }
             }
         }
     }
@@ -1699,6 +1715,25 @@ public class ApiDefinitionService {
     public String getLogDetails(String id) {
         ApiDefinitionWithBLOBs bloBs = apiDefinitionMapper.selectByPrimaryKey(id);
         if (bloBs != null) {
+            if (StringUtils.equals(bloBs.getMethod(), "ESB")) {
+                EsbApiParamsExample example = new EsbApiParamsExample();
+                example.createCriteria().andResourceIdEqualTo(id);
+                List<EsbApiParamsWithBLOBs> list = esbApiParamsMapper.selectByExampleWithBLOBs(example);
+                JSONObject request = JSONUtil.parseObject(bloBs.getRequest());
+                Object backEsbDataStruct = request.get("backEsbDataStruct");
+                Map<String, Object> map = new HashMap<>();
+                if (backEsbDataStruct != null) {
+                    map.put("backEsbDataStruct", backEsbDataStruct);
+                    if (CollectionUtils.isNotEmpty(list)) {
+                        map.put("backScript", list.get(0).getBackedScript());
+                    }
+                    map.put(PropertyConstant.TYPE, "ESB");
+                }
+                request.remove("backEsbDataStruct");
+                bloBs.setRequest(request.toString());
+                String response = JSON.toJSONString(map);
+                bloBs.setResponse(response);
+            }
             List<DetailColumn> columns = ReflexObjectUtil.getColumns(bloBs, DefinitionReference.definitionColumns);
             OperatingLogDetails details = new OperatingLogDetails(JSON.toJSONString(id), bloBs.getProjectId(), bloBs.getName(), bloBs.getCreateUser(), columns);
             return JSON.toJSONString(details);
@@ -1786,6 +1821,7 @@ public class ApiDefinitionService {
         ApiDefinitionResult result = null;
         if (CollectionUtils.isNotEmpty(list)) {
             result = list.get(0);
+            this.checkApiAttachInfo(result);
         }
         return result;
     }
@@ -1798,6 +1834,13 @@ public class ApiDefinitionService {
         }
         return new ArrayList<>();
     }
+
+    private void checkApiAttachInfo(ApiDefinitionResult result) {
+        if (StringUtils.equalsIgnoreCase("esb", result.getMethod())) {
+            esbApiParamService.handleApiEsbParams(result);
+        }
+    }
+
 
 
     public Map<String, List<ApiDefinition>> countEffectiveByProjectId(String projectId, String versionId) {
