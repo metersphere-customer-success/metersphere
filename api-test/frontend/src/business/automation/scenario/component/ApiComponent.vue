@@ -138,7 +138,7 @@
               :is-read-only="isCompReadOnly"
               ref="esbDefinition" />
             <ms-tcp-format-parameters
-              v-if="(request.protocol === 'TCP' || request.type === 'TCPSampler') && request.esbDataStruct == null"
+              v-if="(request.protocol === 'TCP' ||request.protocol === 'ESB' || request.type === 'TCPSampler') && request.esbDataStruct == null"
               :is-read-only="isCompReadOnly"
               :response="response"
               :show-pre-script="true"
@@ -170,7 +170,8 @@
           <p class="tip">{{ $t('api_test.definition.request.res_param') }}</p>
           <div v-if="request.backEsbDataStruct != null">
             <mx-esb-definition-response
-              :currentProtocol="request.protocol"
+              :currentProtocol="
+              request.protocol"
               :request="request"
               :is-api-component="false"
               :show-options-button="false"
@@ -180,26 +181,35 @@
           </div>
           <div v-else>
             <el-tabs
-            v-model="request.activeName"
-            closable
-            class="ms-tabs"
-            v-if="request.requestResult && request.requestResult.length > 1">
-            <el-tab-pane
-              v-for="(item, i) in request.requestResult"
-              :label="'循环' + (i + 1)"
-              :key="`api-response${i}`"
-              style="margin-bottom: 5px">
-              <api-response-component :currentProtocol="request.protocol" :apiActive="true" :result="item" />
-            </el-tab-pane>
-          </el-tabs>
-          <api-response-component
-            :currentProtocol="request.protocol"
-            :apiActive="true"
-            :result="request.requestResult && request.requestResult[0]"
-            v-else />
+              v-model="request.activeName"
+              closable
+              class="ms-tabs"
+              v-if="request.requestResult && request.requestResult.length > 1">
+              <el-tab-pane
+                v-for="(item, i) in request.requestResult"
+                :label="'循环' + (i + 1)"
+                :key="i"
+                style="margin-bottom: 5px">
+                <api-response-component :currentProtocol="request.protocol" :apiActive="true" :result="item" />
+              </el-tab-pane>
+            </el-tabs>
+            <api-response-component
+              :currentProtocol="request.protocol"
+              :apiActive="true"
+              :result="request.requestResult[0]"
+              v-else />
+          </div>
         </div>
       </template>
     </api-base-component>
+    <ms-run
+      :debug="true"
+      :reportId="reportId"
+      :run-data="runData"
+      :env-map="environmentMap"
+      @runRefresh="runRefresh"
+      @errorRefresh="errorRefresh"
+      ref="runTest" />
   </div>
 </template>
 

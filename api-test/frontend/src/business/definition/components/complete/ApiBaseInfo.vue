@@ -105,6 +105,7 @@ import MsSelectTree from 'metersphere-frontend/src/components/select-tree/Select
 import MsInputTag from 'metersphere-frontend/src/components/MsInputTag';
 import CustomFiledFormRow from 'metersphere-frontend/src/components/form/CustomFiledFormRow';
 import { useApiStore } from '@/store';
+import { hasLicense } from 'metersphere-frontend/src/utils/permission';
 import { API_STATUS, REQ_METHOD } from '../../model/JsonData';
 
 const store = useApiStore();
