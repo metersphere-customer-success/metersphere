@@ -99,7 +99,7 @@ public class ApiDefinitionService {
     public static final String JSONSCHEMA = "jsonSchema";
     private static final String COPY = "Copy";
     private static final String SCHEDULE = "schedule";
-    private static final String API_CASE = "apiCase";
+    private static final String API_CASE = "apiCzase";
     @Resource
     private ExtApiDefinitionMapper extApiDefinitionMapper;
     @Resource

@@ -493,9 +493,8 @@ public class ApiTestCaseService {
         request.setRequest(tcpApiParamService.parseMsTestElement(request.getRequest()));
         if (StringUtils.isNotEmpty(request.getEsbDataStruct()) || StringUtils.isNotEmpty(request.getBackEsbDataStruct())) {
             request = esbApiParamService.handleEsbRequest(request);
+            FileUtils.copyBdyFile(request.getApiDefinitionId(), request.getId());
         }
-        FileUtils.copyBdyFile(request.getApiDefinitionId(), request.getId());
-
         if (StringUtils.isNotBlank(request.getSourceIdByCopy())) {
             ApiFileUtil.copyBdyFile(request.getSourceIdByCopy(), request.getId());
         } else {

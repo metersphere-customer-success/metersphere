@@ -4,6 +4,7 @@ import io.metersphere.api.dto.ApiTestImportRequest;
 import io.metersphere.base.domain.ApiDefinitionWithBLOBs;
 import io.metersphere.base.domain.ApiModule;
 import io.metersphere.base.domain.ApiTestCaseWithBLOBs;
+import io.metersphere.base.domain.EsbApiParamsWithBLOBs;
 import lombok.Data;
 
 import java.util.List;
@@ -29,6 +30,8 @@ public class ApiImportParamDto {
     private List<ApiTestCaseWithBLOBs> repeatCaseList;
     private Map<String, List<ApiDefinitionWithBLOBs>> repeatApiMap;
 
+    //ESB文件导入的附属数据类
+    private Map<String, EsbApiParamsWithBLOBs> esbApiParamsMap;
 
     public ApiImportParamDto(ApiModuleDTO chooseModule, Map<String, String> idPathMap, List<ApiDefinitionWithBLOBs> optionData, Boolean fullCoverage, ApiTestImportRequest request, Map<String, ApiModule> moduleMap, List<ApiDefinitionWithBLOBs> toUpdateList, List<ApiTestCaseWithBLOBs> optionDataCases) {
         this.chooseModule = chooseModule;

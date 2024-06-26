@@ -681,10 +681,10 @@ public class ApiModuleService extends NodeTreeService<ApiModuleDTO> {
             fullCoverage = false;
         }
 
-        //标准版ESB数据导入不区分是否覆盖，默认都为覆盖
-        if (apiImport.getEsbApiParamsMap() != null) {
-            fullCoverage = true;
-        }
+//        //标准版ESB数据导入不区分是否覆盖，默认都为覆盖
+//        if (apiImport.getEsbApiParamsMap() != null) {
+//            fullCoverage = true;
+//        }
         return fullCoverage;
     }
 

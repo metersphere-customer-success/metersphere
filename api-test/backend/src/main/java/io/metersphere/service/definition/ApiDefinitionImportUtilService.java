@@ -923,11 +923,11 @@ public class ApiDefinitionImportUtilService {
         //处理数据
         if (fullCoverage) {
             if (fullCoverageApi) {
-                startCoverModule(toUpdateList, optionData, optionMap, repeatDataMap, updateVersionId, optionDataCases, oldCaseMap,esbApiParamsMap);
+                startCoverModule(toUpdateList, optionData, optionMap, repeatDataMap, updateVersionId, optionDataCases, oldCaseMap,apiImportParamDto.getEsbApiParamsMap());
             } else {
                 //过滤同一层级重复模块，导入文件没有新增接口无需创建接口模块
                 moduleMap = judgeModuleMap(moduleMap, optionMap, repeatDataMap);
-                startCover(toUpdateList, optionData, optionMap, repeatDataMap, updateVersionId, optionDataCases, oldCaseMap,esbApiParamsMap);
+                startCover(toUpdateList, optionData, optionMap, repeatDataMap, updateVersionId, optionDataCases, oldCaseMap,apiImportParamDto.getEsbApiParamsMap());
             }
         } else {
             //不覆盖
@@ -941,7 +941,7 @@ public class ApiDefinitionImportUtilService {
             repeatDataMap = repeatApiDefinitionWithBLOBs.stream().collect(Collectors.groupingBy(t -> t.getName().concat(t.getModulePath())));
             optionMap = optionData.stream().collect(Collectors.toMap(t -> t.getName().concat(t.getModulePath()), api -> api));
             if (fullCoverage) {
-                startCover(toUpdateList, optionData, optionMap, repeatDataMap, updateVersionId, optionDataCases, oldCaseMap,esbApiParamsMap);
+                startCover(toUpdateList, optionData, optionMap, repeatDataMap, updateVersionId, optionDataCases, oldCaseMap,apiImportParamDto.getEsbApiParamsMap());
             } else {
                 //不覆盖,同一接口不做更新
                 if (CollectionUtils.isNotEmpty(repeatApiDefinitionWithBLOBs)) {
