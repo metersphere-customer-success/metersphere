@@ -1720,6 +1720,7 @@ const message = {
       variables: "自定義變量",
       headers: "請求頭",
       kv_description: "所有請求可以使用自定義變量",
+      wait_controller_description: "等待控制器對整個場景步骤生效，而不是單個請求",
       copy: "復製場景",
       delete: "刪除場景",
       disable: "禁用",

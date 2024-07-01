@@ -1721,6 +1721,7 @@ const message = {
       variables: "自定义变量",
       headers: "请求头",
       kv_description: "所有请求可以使用自定义变量",
+      wait_controller_description: "等待控制器对整个场景中步骤生效，而不是单个请求",
       copy: "复制场景",
       delete: "删除场景",
       disable: "禁用",

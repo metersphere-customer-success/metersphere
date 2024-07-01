@@ -1780,6 +1780,7 @@ const message = {
       variables: "Variables",
       headers: "Headers",
       kv_description: "Variables are available for all requests",
+      wait_controller_description: "wait controller on the entire scene step by step, rather than a single request",
       copy: "Copy scenario",
       delete: "Delete scenario",
       disable: "Disable",

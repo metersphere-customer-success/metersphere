@@ -20,6 +20,13 @@
         ref="nameInput"
         :disabled="timer.disabled" />
       ms
+<!--      添加提示语-->
+      <el-tooltip placement="top">
+        <div slot="content">
+          {{ $t('api_test.scenario.wait_controller_description') }}
+        </div>
+        <i class="el-icon-question" style="cursor: pointer"/>
+      </el-tooltip>
     </template>
   </api-base-component>
 </template>
