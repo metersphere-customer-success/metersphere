@@ -68,7 +68,8 @@
             :document="assertions.document"
             :callback="after"
             v-if="type === options.DOCUMENT" />
-          <el-button v-if="!type" :disabled="true" type="primary" size="mini">
+<!--          <el-button v-if="!type" :disabled="true" type="primary" size="mini">-->
+          <el-button v-if="!type"  type="primary" size="mini" >
             {{ $t('api_test.request.assertions.add') }}
           </el-button>
         </el-col>
@@ -155,7 +156,7 @@ export default {
     return {
       options: ASSERTION_TYPE,
       time: 1,
-      type: '',
+      type: ASSERTION_TYPE.JSON_PATH,
       loading: false,
       reloadData: '',
     };
@@ -174,6 +175,10 @@ export default {
     }
   },
   methods: {
+    setDefaultSelectValue() {
+      // 设置默认值，例如将type设置为options.TEXT
+      this.type = ASSERTION_TYPE.JSON_PATH;
+},
     computeStep() {
       let ruleSize = 0;
       ruleSize =
@@ -197,7 +202,7 @@ export default {
     },
 
     after() {
-      this.type = '';
+      this.type = ASSERTION_TYPE.JSON_PATH;
       this.reloadData = getUUID().substring(0, 8);
       this.reload();
     },

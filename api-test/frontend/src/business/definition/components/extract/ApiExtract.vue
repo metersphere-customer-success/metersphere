@@ -47,7 +47,8 @@
               :callback="after" />
           </el-col>
 
-          <el-button v-if="!type" :disabled="true" type="primary" size="small">{{ $t('commons.add') }}</el-button>
+<!--          <el-button v-if="!type" :disabled="true" type="primary" size="small">{{ $t('commons.add') }}</el-button>-->
+          <el-button v-if="!type" type="primary" size="small">{{ $t('commons.add') }}</el-button>
         </el-row>
       </div>
 
@@ -125,14 +126,14 @@ export default {
   data() {
     return {
       options: EXTRACT_TYPE,
-      type: '',
+      type: EXTRACT_TYPE.JSON_PATH,
       reloadData: '',
       loading: false,
     };
   },
   methods: {
     after() {
-      this.type = '';
+      this.type = EXTRACT_TYPE.JSON_PATH;
       this.reloadData = getUUID().substring(0, 8);
     },
     remove() {
