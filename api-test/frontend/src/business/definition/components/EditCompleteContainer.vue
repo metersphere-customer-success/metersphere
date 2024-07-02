@@ -244,6 +244,11 @@ export default {
     },
   },
   methods: {
+
+    handleSave1() {
+
+      this.$refs.apiConfig.handleSave();
+    },
     reLoadCase() {
       this.$refs.trashCaseList.initTable();
     },

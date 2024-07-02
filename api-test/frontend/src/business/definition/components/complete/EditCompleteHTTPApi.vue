@@ -478,6 +478,7 @@ export default {
       }
     },
     saveApi() {
+        console.log("333333");
       this.$refs['httpForm'].validate((valid) => {
         if (valid) {
           this.setParameter();

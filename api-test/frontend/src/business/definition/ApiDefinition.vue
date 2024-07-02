@@ -779,24 +779,73 @@ export default {
           }
         }
       });
-      if (message !== '') {
-        this.$alert(this.$t('commons.api') + ' [ ' + message + ' ] ' + this.$t('commons.confirm_info'), '', {
-          confirmButtonText: this.$t('commons.confirm'),
-          cancelButtonText: this.$t('commons.cancel'),
-          callback: (action) => {
-            if (action === 'confirm') {
-              store.apiMap.delete(id);
-              this.handleTabRemove(targetName);
+      //弹窗 确认是否关闭
+      // if (message !== '') {
+      //   this.$alert(this.$t('commons.api') + ' [ ' + message + ' ] ' + this.$t('commons.confirm_info'), '', {
+      //     confirmButtonText: this.$t('commons.confirm'),
+      //     cancelButtonText: this.$t('commons.cancel'),
+      //     callback: (action) => {
+      //       if (action === 'confirm') {
+      //         store.apiMap.delete(id);
+      //         this.handleTabRemove(targetName);
+      //       }
+      //     },
+      //   });
+      // } else {
+      //   if (id) {
+      //     store.apiMap.delete(id);
+      //     store.saveMap.delete(id);
+      //   }
+      //   this.handleTabRemove(targetName);
+      // }
+
+      //弹窗 保存并关闭/直接关闭
+        if (message !== '') {
+            //存在改动
+            this.$alert(this.$t('commons.api') + ' [ ' + message + ' ] ' + this.$t('commons.confirm_info'), '', {
+               // confirmButtonText: this.$t('commons.confirm'),
+                //cancelButtonText: this.$t('commons.cancel'),
+
+              showCancelButton: true,
+              confirmButtonText: '保存并关闭',
+              cancelButtonText: '直接关闭',
+              showClose: true,
+              customClass: "messageStyle",
+              dangerouslyUseHTMLString: true,
+                callback: (action) => {
+
+                    if (action === 'confirm') {
+                      //保存并关闭
+                      if (this.$refs.apiConfig) {
+                        // 确保handleSave1方法存在
+                        // this.$nextTick(() => {
+                        let index = tab.findIndex((item) => item.name === targetName); //  找到当前选中tab的index
+                        if (index !== -1 && this.$refs.apiConfig[index - 1]) {
+                          let demo=  this.$refs.apiConfig[index - 1]; //  为选中tab 触发handleSave （index-1的原因是要除去第一个固有tab）
+                          demo.handleSave1();
+                        }
+
+                      }
+                      //直接关闭
+                    }else if(action === 'cancel') {
+
+                      store.apiMap.delete(id);
+                      this.handleTabRemove(targetName);
+
+                    }
+                },
+
+            });
+        } else {
+            //未有改动
+            if (id) {
+                store.apiMap.delete(id);
+                store.saveMap.delete(id);
             }
-          },
-        });
-      } else {
-        if (id) {
-          store.apiMap.delete(id);
-          store.saveMap.delete(id);
+            this.handleTabRemove(targetName);
         }
-        this.handleTabRemove(targetName);
-      }
+
+
     },
     handleTabRemove(targetName) {
       let tabs = this.apiTabs;
@@ -1187,4 +1236,13 @@ export default {
   white-space: nowrap;
   max-width: 200px;
 }
+</style>
+<style lang="scss">
+.messageStyle {
+
+  .el-message-box__headerbtn .el-message-box__close {
+    display: none;
+  }
+}
+
 </style>
