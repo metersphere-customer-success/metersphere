@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.metersphere.db.mapper.DataRulesMapper">
+  <resultMap id="BaseResultMap" type="io.metersphere.dto.DataRules">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="workspace_id" jdbcType="VARCHAR" property="workspaceId" />
+    <result column="rule_context" jdbcType="VARCHAR" property="ruleContext" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="test_point" jdbcType="VARCHAR" property="testPoint" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="case_quality" jdbcType="VARCHAR" property="caseQuality" />
+    <result column="iter" jdbcType="INTEGER" property="iter" />
+    <result column="gen_num" jdbcType="INTEGER" property="genNum" />
+    <result column="gen_type" jdbcType="VARCHAR" property="genType" />
+    <result column="gen_concurrent" jdbcType="INTEGER" property="genConcurrent" />
+    <result column="encrypt_method" jdbcType="VARCHAR" property="encryptMethod" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="project_id" jdbcType="VARCHAR" property="projectId" />
+    <result column="node_id" jdbcType="VARCHAR" property="nodeId" />
+    <result column="node_path" jdbcType="VARCHAR" property="nodePath" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, workspace_id, rule_context, `name`, test_point, `type`, case_quality, iter, gen_num, 
+    gen_type, gen_concurrent, encrypt_method, create_time, update_time, creator, project_id, 
+    node_id, node_path
+  </sql>
+  <select id="selectByExample" parameterType="io.metersphere.dto.DataRulesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from data_rules
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from data_rules
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from data_rules
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="io.metersphere.dto.DataRulesExample">
+    delete from data_rules
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="io.metersphere.dto.DataRules">
+    insert into data_rules (id, workspace_id, rule_context, 
+      `name`, test_point, `type`, 
+      case_quality, iter, gen_num, 
+      gen_type, gen_concurrent, encrypt_method, 
+      create_time, update_time, creator, 
+      project_id, node_id, node_path
+      )
+    values (#{id,jdbcType=VARCHAR}, #{workspaceId,jdbcType=VARCHAR}, #{ruleContext,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{testPoint,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{caseQuality,jdbcType=VARCHAR}, #{iter,jdbcType=INTEGER}, #{genNum,jdbcType=INTEGER}, 
+      #{genType,jdbcType=VARCHAR}, #{genConcurrent,jdbcType=INTEGER}, #{encryptMethod,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{creator,jdbcType=VARCHAR}, 
+      #{projectId,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR}, #{nodePath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.metersphere.dto.DataRules">
+    insert into data_rules
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workspaceId != null">
+        workspace_id,
+      </if>
+      <if test="ruleContext != null">
+        rule_context,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="testPoint != null">
+        test_point,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="caseQuality != null">
+        case_quality,
+      </if>
+      <if test="iter != null">
+        iter,
+      </if>
+      <if test="genNum != null">
+        gen_num,
+      </if>
+      <if test="genType != null">
+        gen_type,
+      </if>
+      <if test="genConcurrent != null">
+        gen_concurrent,
+      </if>
+      <if test="encryptMethod != null">
+        encrypt_method,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="nodePath != null">
+        node_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceId != null">
+        #{workspaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleContext != null">
+        #{ruleContext,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="testPoint != null">
+        #{testPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="caseQuality != null">
+        #{caseQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="iter != null">
+        #{iter,jdbcType=INTEGER},
+      </if>
+      <if test="genNum != null">
+        #{genNum,jdbcType=INTEGER},
+      </if>
+      <if test="genType != null">
+        #{genType,jdbcType=VARCHAR},
+      </if>
+      <if test="genConcurrent != null">
+        #{genConcurrent,jdbcType=INTEGER},
+      </if>
+      <if test="encryptMethod != null">
+        #{encryptMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodePath != null">
+        #{nodePath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="io.metersphere.dto.DataRulesExample" resultType="java.lang.Long">
+    select count(*) from data_rules
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update data_rules
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workspaceId != null">
+        workspace_id = #{record.workspaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ruleContext != null">
+        rule_context = #{record.ruleContext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testPoint != null">
+        test_point = #{record.testPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        `type` = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseQuality != null">
+        case_quality = #{record.caseQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iter != null">
+        iter = #{record.iter,jdbcType=INTEGER},
+      </if>
+      <if test="record.genNum != null">
+        gen_num = #{record.genNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.genType != null">
+        gen_type = #{record.genType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.genConcurrent != null">
+        gen_concurrent = #{record.genConcurrent,jdbcType=INTEGER},
+      </if>
+      <if test="record.encryptMethod != null">
+        encrypt_method = #{record.encryptMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeId != null">
+        node_id = #{record.nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodePath != null">
+        node_path = #{record.nodePath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update data_rules
+    set id = #{record.id,jdbcType=VARCHAR},
+      workspace_id = #{record.workspaceId,jdbcType=VARCHAR},
+      rule_context = #{record.ruleContext,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      test_point = #{record.testPoint,jdbcType=VARCHAR},
+      `type` = #{record.type,jdbcType=VARCHAR},
+      case_quality = #{record.caseQuality,jdbcType=VARCHAR},
+      iter = #{record.iter,jdbcType=INTEGER},
+      gen_num = #{record.genNum,jdbcType=INTEGER},
+      gen_type = #{record.genType,jdbcType=VARCHAR},
+      gen_concurrent = #{record.genConcurrent,jdbcType=INTEGER},
+      encrypt_method = #{record.encryptMethod,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=BIGINT},
+      update_time = #{record.updateTime,jdbcType=BIGINT},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      project_id = #{record.projectId,jdbcType=VARCHAR},
+      node_id = #{record.nodeId,jdbcType=VARCHAR},
+      node_path = #{record.nodePath,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="io.metersphere.dto.DataRules">
+    update data_rules
+    <set>
+      <if test="workspaceId != null">
+        workspace_id = #{workspaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleContext != null">
+        rule_context = #{ruleContext,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="testPoint != null">
+        test_point = #{testPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="caseQuality != null">
+        case_quality = #{caseQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="iter != null">
+        iter = #{iter,jdbcType=INTEGER},
+      </if>
+      <if test="genNum != null">
+        gen_num = #{genNum,jdbcType=INTEGER},
+      </if>
+      <if test="genType != null">
+        gen_type = #{genType,jdbcType=VARCHAR},
+      </if>
+      <if test="genConcurrent != null">
+        gen_concurrent = #{genConcurrent,jdbcType=INTEGER},
+      </if>
+      <if test="encryptMethod != null">
+        encrypt_method = #{encryptMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodePath != null">
+        node_path = #{nodePath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.metersphere.dto.DataRules">
+    update data_rules
+    set workspace_id = #{workspaceId,jdbcType=VARCHAR},
+      rule_context = #{ruleContext,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      test_point = #{testPoint,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      case_quality = #{caseQuality,jdbcType=VARCHAR},
+      iter = #{iter,jdbcType=INTEGER},
+      gen_num = #{genNum,jdbcType=INTEGER},
+      gen_type = #{genType,jdbcType=VARCHAR},
+      gen_concurrent = #{genConcurrent,jdbcType=INTEGER},
+      encrypt_method = #{encryptMethod,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=VARCHAR},
+      node_id = #{nodeId,jdbcType=VARCHAR},
+      node_path = #{nodePath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

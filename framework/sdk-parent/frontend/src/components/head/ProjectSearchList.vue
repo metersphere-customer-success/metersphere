@@ -116,6 +116,11 @@ export default {
         this.reload();
         return;
       }
+      if (copyRedirectUrl.startsWith("/testutils")){
+        this.$router.push(copyRedirectUrl);
+        this.reload();
+        return;
+      }
       if (copyRedirectUrl.startsWith("/track") || copyRedirectUrl.startsWith("/performance")
         || copyRedirectUrl.startsWith("/api") || copyRedirectUrl.startsWith("/ui")) {
         // 获取有权限的跳转路径

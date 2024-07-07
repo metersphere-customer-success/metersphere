@@ -19,6 +19,30 @@ export const ISSUE_TEMPLATE_LIST = new Set([
 ]);
 
 export let CUSTOM_TABLE_HEADER = {
+  /*
+  *  ruleContext:"数据规则内容",
+    name:"规则名称",
+    testPoint:"测试点",
+    type:"类型",
+    caseQuality:"案例性质",
+    iter:"轮次",
+    genNum:"生成条数",
+    genType:"生成类型",
+    genConcurrent:"是否并发",
+    encryptMethod:"加密方式",
+  * */
+  DATA_RULES: [
+    { id: "ruleContext", key: "1", label: "data.ruleContext" },
+    { id: "name", key: "2", label: "data.name" },
+    { id: "testPoint", key: "3", label: "data.testPoint" },
+    { id: "type", key: "4", label: "data.type" },
+    { id: "caseQuality", key: "5", label: "data.caseQuality" },
+    { id: "iter", key: "6", label: "data.iter" },
+    { id: "genNum", key: "7", label: "data.genNum" },
+    { id: "genType", key: "8", label: "data.genType" },
+    { id: "genConcurrent", key: "9", label: "data.genConcurrent" },
+    { id: "encryptMethod", key: "10", label: "data.encryptMethod" },
+  ],
   CUSTOM_FIELD: [
     { id: "name", key: "1", label: "commons.name" },
     { id: "scene", key: "2", label: "custom_field.scene" },

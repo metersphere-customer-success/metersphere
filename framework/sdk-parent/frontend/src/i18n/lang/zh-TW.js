@@ -161,6 +161,7 @@ const message = {
     functional: "功能測試",
     my_workstation: "工作臺",
     ui_test: "UI測試",
+    test_utils: "數據管理",
     input_content: "請輸入內容",
     input_un_pass_reason: "請輸入不通過原因",
     create: "新建",

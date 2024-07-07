@@ -44,3 +44,5 @@ qywx.json
 .flattened-pom.xml
 
 .node/
+/tmp
+*.log

@@ -330,6 +330,9 @@ export default {
       content_empty: "内容为空",
     },
   },
+  data:{
+    dataRule:"数据规则库"
+  },
   demand: {
     id: "需求ID",
     name: "需求名称",

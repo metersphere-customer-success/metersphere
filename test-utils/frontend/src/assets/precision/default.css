@@ -1,0 +1,62 @@
+code.hljs {
+    border: #d6d3ce 1px solid;
+    margin: -30px 0;
+}
+
+.compact code.hljs {
+    line-height: 1.3;
+}
+
+code.hljs span.fc {
+    background-color: #ccffcc;
+}
+
+code.hljs span.nc {
+    background-color: #ffaaaa;
+}
+
+code.hljs span.pc {
+    background-color: #ffffcc;
+}
+
+code.hljs span.bfc {
+    background-image: url('@/assets/precision/branchfc.gif');
+    background-repeat: no-repeat;
+    background-position: 25px center;
+}
+
+code.hljs span.bfc:hover {
+  background-color:#80ff80;
+}
+
+code.hljs span.bpc {
+    background-image: url('@/assets/precision/branchpc.gif');
+    background-repeat: no-repeat;
+    background-position: 25px center;
+}
+
+code.hljs span.bpc:hover {
+    background-color: #ffff80;
+}
+
+code.hljs span.bnc {
+    background-image: url('@/assets/precision/branchnc.gif');
+    background-repeat: no-repeat;
+    background-position: 25px center;
+}
+
+code.hljs span.bnc:hover {
+  background-color:#ff8080;
+}
+
+code.hljs div.delta {
+    background-color: #d8ddfd;
+    position: relative;
+}
+
+div.delta > span::before {
+    content: attr(data-delta-type);
+    color: #888888;
+    position: absolute;
+    right: 0.2em;
+}

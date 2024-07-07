@@ -50,6 +50,9 @@ public class ModuleService {
                 case "setting":
                     key = "系统设置";
                     break;
+                case "testutils":
+                    key = "测试工具";
+                    break;
             }
         }
 

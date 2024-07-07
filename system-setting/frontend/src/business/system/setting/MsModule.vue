@@ -46,6 +46,15 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-row :gutter="12">
+      <el-col :span="8">
+        <el-card shadow="hover">
+          {{ $t('commons.test_utils') }}
+          <el-switch v-model="testutils" @change="update('testutils')" active-value="ENABLE"
+                     inactive-value="DISABLE" :disabled="disabled"/>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -74,6 +83,7 @@ export default {
       track: "ENABLE",
       ui: "ENABLE",
       workstation: "ENABLE",
+      testutils: "ENABLE",
     };
   },
   mounted() {

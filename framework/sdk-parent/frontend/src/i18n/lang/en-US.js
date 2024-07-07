@@ -159,6 +159,7 @@ const message = {
     my_workstation: "Workstation",
     ui_test: "UiTest",
     performance: "Performance",
+    test_utils: "TestUtils",
     enable_settings: "Enable Settings",
     view_settings: "View Settings",
     functional: "Functional test",
