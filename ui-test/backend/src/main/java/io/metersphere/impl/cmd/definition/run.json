@@ -1,0 +1,22 @@
+{
+  "name": "run",
+  "description": "Runs a test case from the current project.",
+  "target": "testCase",
+  "value": "optionalFlag",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "run",
+  "cnDesc": "运行一个当前项目的测试用例",
+  "twName": "run",
+  "twDesc": "運行一個當前項目的測試用例",
+  "cnType": "流程控制",
+  "webdriverScript": "runWebDriverScript.js",
+  "cypressScript": "runCypressScript.js",
+  "sort": 1,
+  "targetCNName": "测试用例",
+  "targetTWName": "測試用例",
+  "valueCNName": "可选的国旗",
+  "valueTWName": "可選的國旗",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

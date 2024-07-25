@@ -1,0 +1,22 @@
+{
+  "name": "assert",
+  "description": "Check that a variable is an expected value. The variable's value will be converted to a string for comparison. The test will stop if the assert fails.",
+  "target": "variableName",
+  "value": "expectedValue",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言",
+  "cnDesc": "检查一个元素的值，如果值与预设相等则显示正确否则显示失败",
+  "twName": "斷言",
+  "twDesc": "檢查一個元素的值，如果值與預設相等則顯示正確否則顯示失敗",
+  "cnType": "校验",
+  "webdriverScript": "assertWebDriverScript.js",
+  "cypressScript": "assertCypressScript.js",
+  "sort": 1,
+  "targetCNName": "变量名",
+  "targetTWName": "變量名",
+  "valueCNName": "期望值",
+  "valueTWName": "期望值",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

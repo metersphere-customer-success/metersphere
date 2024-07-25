@@ -1,0 +1,20 @@
+{
+  "name": "verifyTitle",
+  "description": "Soft assert the title of the current page contains the provided text. The test will continue even if the verify fails.",
+  "target": "text",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "验证一个标题",
+  "cnDesc": "验证一个标题，即使验证失败也不会中断测试",
+  "twName": "驗證一個標題",
+  "twDesc": "驗證一個標題，即使驗證失敗也不會中斷測試",
+  "cnType": "校验",
+  "webdriverScript": "verifyTitleWebDriverScript.js",
+  "cypressScript": "verifyTitleCypressScript.js",
+  "sort": 1,
+  "targetCNName": "文本",
+  "targetTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

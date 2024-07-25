@@ -1,0 +1,18 @@
+on: pull_request
+
+name: MeterSphere 通用 PR 处理
+
+permissions:
+  pull-requests: write
+
+jobs:
+  generic_handler:
+    name: 为 PR 添加标签
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUBTOKEN }}
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: ${{ github.base_ref }}

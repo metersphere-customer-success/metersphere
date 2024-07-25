@@ -1,0 +1,20 @@
+{
+  "name": "webdriverAnswerOnVisiblePrompt",
+  "description": "Affects a currently showing alert prompt. This command instructs Selenium to provide the specified answer to it. If the alert has not appeared yet then use 'answer on next prompt' instead.",
+  "target": "answer",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dialogOperation",
+  "cnName": "设置 alert 文本",
+  "cnDesc": "用给定文本回答 prompt",
+  "twName": "設置 alert 文本",
+  "twDesc": "用給定文本回答 prompt",
+  "cnType": "对话框操作",
+  "webdriverScript": "webdriverAnswerOnVisiblePromptWebDriverScript.js",
+  "cypressScript": "webdriverAnswerOnVisiblePromptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "回答",
+  "targetTWName": "回答",
+  "twType": "對話框操作",
+  "component": "BaseCommand"
+}

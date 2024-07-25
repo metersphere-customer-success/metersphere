@@ -1,0 +1,22 @@
+{
+  "name": "storeXpathCount",
+  "description": "Gets the number of nodes that match the specified xpath (e.g. '//table' would give the number of tables).",
+  "target": "xpath",
+  "value": "variableName",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "提取匹配元素个数",
+  "cnDesc": "提取符合 Xpath 规则匹配的元素的个数",
+  "twName": "提取匹配元素個數",
+  "twDesc": "提取符合 Xpath 規則匹配的元素的個數",
+  "cnType": "数据提取",
+  "webdriverScript": "storeXpathCountWebDriverScript.js",
+  "cypressScript": "storeXpathCountCypressScript.js",
+  "sort": 1,
+  "targetCNName": "xpath",
+  "targetTWName": "xpath",
+  "valueCNName": "变量名",
+  "valueTWName": "變量名",
+  "twType": "數據提取",
+  "component": "BaseCommand"
+}

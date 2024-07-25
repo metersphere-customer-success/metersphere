@@ -1,0 +1,20 @@
+{
+  "name": "runScript",
+  "description": "Creates a new 'script' tag in the body of the current test window, and adds the specified text into the body of the command. Beware that JS exceptions thrown in these script tags aren't managed by Selenium, so you should probably wrap your script in try/catch blocks if there is any chance that the script will throw an exception.",
+  "target": "script",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "runScript",
+  "cnDesc": "给当前测试 window 创建一个 script 标签 并且执行。（注意，js 的异常抛出不被框架纳管）",
+  "twName": "runScript",
+  "twDesc": "給當前測試 window 創建一個 script 標簽 並且執行。（註意，js 的異常拋出不被框架納管）",
+  "cnType": "流程控制",
+  "webdriverScript": "runScriptWebDriverScript.js",
+  "cypressScript": "runScriptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "脚本",
+  "targetTWName": "腳本",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

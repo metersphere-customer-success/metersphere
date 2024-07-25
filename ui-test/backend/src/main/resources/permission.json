@@ -1,0 +1,135 @@
+{
+  "permissions": [
+    {
+      "id": "PROJECT_UI_ELEMENT:READ",
+      "name": "permission.project_ui_element.read",
+      "resourceId": "PROJECT_UI_ELEMENT",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_ELEMENT:READ+CREATE",
+      "name": "permission.project_ui_element.create",
+      "resourceId": "PROJECT_UI_ELEMENT",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_ELEMENT:READ+EDIT",
+      "name": "permission.project_ui_element.edit",
+      "resourceId": "PROJECT_UI_ELEMENT",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_ELEMENT:READ+DELETE",
+      "name": "permission.project_ui_element.delete",
+      "resourceId": "PROJECT_UI_ELEMENT",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_ELEMENT:READ+COPY",
+      "name": "permission.project_ui_element.copy",
+      "resourceId": "PROJECT_UI_ELEMENT",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ",
+      "name": "permission.project_ui_scenario.read",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+CREATE",
+      "name": "permission.project_ui_scenario.create",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+EDIT",
+      "name": "permission.project_api_scenario.edit",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+DELETE",
+      "name": "permission.project_ui_scenario.delete",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+COPY",
+      "name": "permission.project_ui_scenario.copy",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+RUN",
+      "name": "permission.project_ui_scenario.run",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+DEBUG",
+      "name": "permission.project_ui_scenario.debug",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+SCHEDULE",
+      "name": "permission.project_ui_scenario.schedule",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+IMPORT_SCENARIO",
+      "name": "permission.project_ui_scenario.import",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+EXPORT_SCENARIO",
+      "name": "permission.project_ui_scenario.export",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+MOVE_BATCH",
+      "name": "permission.project_ui_scenario.move_batch",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO:READ+BATCH_COPY",
+      "name": "permission.project_ui_scenario.batch_copy",
+      "resourceId": "PROJECT_UI_SCENARIO",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_REPORT:READ",
+      "name": "permission.project_ui_report.read",
+      "resourceId": "PROJECT_UI_REPORT",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_REPORT:READ+DELETE",
+      "name": "permission.project_ui_report.delete",
+      "resourceId": "PROJECT_UI_REPORT",
+      "license": true
+    }
+  ],
+  "resource": [
+    {
+      "id": "PROJECT_UI_ELEMENT",
+      "name": "permission.project_ui_element.name",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_SCENARIO",
+      "name": "permission.project_ui_scenario.name",
+      "license": true
+    },
+    {
+      "id": "PROJECT_UI_REPORT",
+      "name": "permission.project_ui_report.name",
+      "license": true
+    }
+  ]
+}

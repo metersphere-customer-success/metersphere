@@ -1,0 +1,20 @@
+{
+  "name": "elseIf",
+  "description": "Part of an if block. Execute the commands in this branch when an if condition has not been met. Terminate the branch with the end command.",
+  "target": "conditionalExpression",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "elseIf",
+  "cnDesc": "if 语句的一部分，当一个条件不满足的时候，以 elseIf 后面接的分支结束命令",
+  "twName": "elseIf",
+  "twDesc": "if 語句的一部分，當一個條件不滿足的時候，以 elseIf 後面接的分支結束命令",
+  "cnType": "流程控制",
+  "webdriverScript": "elseIfWebDriverScript.js",
+  "cypressScript": "elseIfCypressScript.js",
+  "sort": 1,
+  "targetCNName": "条件表达式",
+  "targetTWName": "條件表達式",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

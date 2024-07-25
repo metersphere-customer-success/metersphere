@@ -1,0 +1,381 @@
+<template>
+  <div>
+
+    <slot name="header"></slot>
+
+    <ms-node-tree
+      v-loading="result.loading"
+      :tree-nodes="data"
+      :allLabel="$t('api_test.automation.all_scenario')"
+      :type="isReadOnly ? 'view' : 'edit'"
+      :delete-permission="['PROJECT_API_SCENARIO:READ+DELETE']"
+      :add-permission="['PROJECT_API_SCENARIO:READ+CREATE']"
+      :update-permission="['PROJECT_API_SCENARIO:READ+EDIT']"
+      :default-label="$t('api_test.automation.unplanned_scenario')"
+      local-suffix="api_scenario"
+      :show-case-num="showCaseNum"
+      :hide-opretor="isTrashData"
+      @add="add"
+      @edit="edit"
+      @drag="drag"
+      @remove="remove"
+      @refresh="list"
+      @filter="filter"
+      @nodeSelectEvent="nodeChange"
+      ref="nodeTree">
+
+      <template v-slot:header>
+        <ms-search-bar
+          :show-operator="showOperator && !isTrashData"
+          :condition="condition"
+          :commands="operators"/>
+        <module-trash-button v-if="!isReadOnly && !isTrashData" :condition="condition" :exe="enableTrash"
+                             :total='total'/>
+      </template>
+
+    </ms-node-tree>
+
+    <ms-add-basis-scenario
+      :module-options="data"
+      @saveAsEdit="saveAsEdit"
+      @refresh="refresh"
+      ref="basisScenario"/>
+
+    <api-import ref="apiImport" :moduleOptions="data" @refreshAll="$emit('refreshAll')"/>
+  </div>
+
+</template>
+
+<script>
+import SelectMenu from "@/business/element/components/common/SelectMenu";
+import MsAddBasisScenario from "@/business/element/components/AddBasisScenario";
+import MsNodeTree from "@/business/element/components/NodeTree";
+import {buildTree} from "@/business/network/NodeTree";
+import ModuleTrashButton from "@/business/element/components/module/ModuleTrashButton";
+import ApiImport from "./ScenarioImport";
+import MsSearchBar from "@/business/element/components/common/search/MsSearchBar";
+import {getCurrentProjectID} from "metersphere-frontend/src/utils/token";
+
+export default {
+  name: 'MsApiScenarioModule',
+  components: {
+    MsSearchBar,
+    ApiImport,
+    ModuleTrashButton,
+    MsNodeTree,
+    MsAddBasisScenario,
+    SelectMenu,
+  },
+  props: {
+    isReadOnly: {
+      type: Boolean,
+      default() {
+        return false;
+      }
+    },
+    showOperator: Boolean,
+    relevanceProjectId: String,
+    planId: String,
+    pageSource: String,
+    total: Number,
+    isTrashData: Boolean,
+    showCaseNum: {
+      type: Boolean,
+      default() {
+        return true;
+      }
+    }
+  },
+  computed: {
+    isPlanModel() {
+      return this.planId ? true : false;
+    },
+    isRelevanceModel() {
+      return this.relevanceProjectId ? true : false;
+    },
+    projectId() {
+      return getCurrentProjectID();
+    }
+  },
+  data() {
+    return {
+      result: {},
+      condition: {
+        filterText: "",
+        trashEnable: false
+      },
+      data: [],
+      currentModule: undefined,
+      operators: [
+        {
+          label: this.$t('api_test.automation.add_scenario'),
+          callback: this.addScenario,
+          permissions: ['PROJECT_API_SCENARIO:READ+CREATE']
+        },
+        {
+          label: this.$t('api_test.api_import.label'),
+          callback: this.handleImport,
+          permissions: ['PROJECT_API_SCENARIO:READ+IMPORT_SCENARIO']
+        },
+        {
+          label: this.$t('report.export'),
+          children: [
+            {
+              label: this.$t('report.export_to_ms_format'),
+              permissions: ['PROJECT_API_SCENARIO:READ+EXPORT_SCENARIO'],
+              callback: () => {
+                this.exportAPI();
+              }
+            },
+            {
+              label: this.$t('report.export_jmeter_format'),
+              permissions: ['PROJECT_API_SCENARIO:READ+EXPORT_SCENARIO'],
+              callback: () => {
+                this.$emit('exportJmx');
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  mounted() {
+    this.list();
+  },
+  watch: {
+    'condition.filterText'() {
+      this.filter();
+    },
+    'condition.trashEnable'() {
+      this.$emit('enableTrash', this.condition.trashEnable);
+    },
+    planId() {
+      this.list();
+    },
+    relevanceProjectId() {
+      this.list();
+    },
+    isTrashData() {
+      this.condition.trashEnable = this.isTrashData;
+      this.list();
+    }
+  },
+  methods: {
+    handleImport() {
+      if (this.projectId) {
+        this.result = this.$get("/api/automation/module/list/" + this.projectId).then(response => {
+          if (response.data != undefined && response.data != null) {
+            this.data = response.data;
+            this.data.forEach(node => {
+              buildTree(node, {path: ''});
+            });
+          }
+        });
+        this.$refs.apiImport.open(this.currentModule);
+      }
+    },
+    filter() {
+      this.$refs.nodeTree.filter(this.condition.filterText);
+    },
+    list(projectId) {
+      let url = undefined;
+      if (this.isPlanModel) {
+        url = '/api/automation/module/list/plan/' + this.planId;
+      } else if (this.isRelevanceModel) {
+        url = "/api/automation/module/list/" + this.relevanceProjectId;
+      } else if (this.isTrashData) {
+        url = "/api/automation/module/trash/list/" + (projectId ? projectId : this.projectId);
+      } else {
+        url = "/api/automation/module/list/" + (projectId ? projectId : this.projectId);
+        if (!this.projectId) {
+          return;
+        }
+      }
+      this.result = this.$get(url).then(response => {
+        if (response.data != undefined && response.data != null) {
+          this.data = response.data;
+          this.data.forEach(node => {
+            node.name = node.name === '未规划场景' ? this.$t('api_test.automation.unplanned_scenario') : node.name
+            buildTree(node, {path: ''});
+          });
+          this.$emit('setModuleOptions', this.data);
+          this.$emit('setNodeTree', this.data);
+          if (this.$refs.nodeTree) {
+            this.$refs.nodeTree.filter(this.condition.filterText);
+          }
+        }
+      });
+    },
+    edit(param) {
+      param.projectId = this.projectId;
+      param.protocol = this.condition.protocol;
+      this.$post("/api/automation/module/edit", param, () => {
+        this.$success(this.$t('commons.save_success'));
+        this.list();
+        this.refresh();
+      }, (error) => {
+        this.list();
+      });
+    },
+    add(param) {
+      param.projectId = this.projectId;
+      param.protocol = this.condition.protocol;
+      if (param && param.level >= 9) {
+        this.list();
+        this.$error(this.$t('commons.warning_module_add'));
+        return;
+      } else {
+        this.$post("/api/automation/module/add", param, () => {
+          this.$success(this.$t('commons.save_success'));
+          this.list();
+        }, (error) => {
+          this.list();
+        });
+      }
+
+    },
+    remove(nodeIds) {
+      this.$post("/api/automation/module/delete", nodeIds, () => {
+        this.list();
+        this.refresh();
+        this.removeModuleId(nodeIds);
+      }, (error) => {
+        this.list();
+      });
+    },
+    drag(param, list) {
+      this.$post("/api/automation/module/drag", param, () => {
+        this.$post("/api/automation/module/pos", list, () => {
+          this.list();
+        });
+      }, (error) => {
+        this.list();
+      });
+    },
+    nodeChange(node, nodeIds, pNodes) {
+      this.currentModule = node.data;
+      if (node.data.id === 'root') {
+        this.$emit("nodeSelectEvent", node, [], pNodes);
+      } else {
+        this.$emit("nodeSelectEvent", node, nodeIds, pNodes);
+      }
+      this.nohupReloadTree(node.data.id);
+    },
+    //后台更新节点数据
+    nohupReloadTree(selectNodeId) {
+      let url = undefined;
+      if (this.isPlanModel) {
+        url = '/api/automation/module/list/plan/' + this.planId;
+      } else if (this.isRelevanceModel) {
+        url = "/api/automation/module/list/" + this.relevanceProjectId;
+      } else if (this.isTrashData) {
+        if (!this.projectId) {
+          return;
+        }
+        url = "/api/automation/module/trash/list/" + this.projectId;
+      } else {
+        if (!this.projectId) {
+          return;
+        }
+        url = "/api/automation/module/list/" + this.projectId;
+      }
+      this.$get(url).then(response => {
+        if (response.data != undefined && response.data != null) {
+          this.data = response.data;
+          this.data.forEach(node => {
+            node.name = node.name === '未规划场景' ? this.$t('api_test.automation.unplanned_scenario') : node.name
+            buildTree(node, {path: ''});
+          });
+
+          this.$nextTick(() => {
+            if (this.$refs.nodeTree) {
+              this.$refs.nodeTree.filter(this.condition.filterText);
+              if (selectNodeId) {
+                this.$refs.nodeTree.justSetCurrentKey(selectNodeId);
+              }
+            }
+          })
+        }
+      });
+    },
+    exportAPI() {
+      this.$emit('exportAPI', this.data);
+    },
+    saveAsEdit(data) {
+      this.$emit('saveAsEdit', data);
+    },
+    refresh() {
+      this.$emit("refreshAll");
+    },
+    addScenario() {
+      if (!this.projectId) {
+        this.$warning(this.$t('commons.check_project_tip'));
+        return;
+      }
+      this.$refs.basisScenario.open(this.currentModule);
+    },
+    enableTrash() {
+      this.condition.trashEnable = true;
+      this.$emit('enableTrash', this.condition.trashEnable);
+    },
+    removeModuleId(nodeIds) {
+      if (localStorage.getItem('scenarioModule') && localStorage.getItem('scenarioModule') === nodeIds[0]) {
+        localStorage.setItem('scenarioModule', undefined);
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.node-tree {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ms-el-input {
+  height: 25px;
+  line-height: 25px;
+}
+
+.custom-tree-node {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-right: 8px;
+  width: 100%;
+}
+
+.father .child {
+  display: none;
+}
+
+.father:hover .child {
+  display: block;
+}
+
+.node-title {
+  width: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  padding: 0 5px;
+  overflow: hidden;
+}
+
+.node-operate > i {
+  color: #409eff;
+  margin: 0 5px;
+}
+
+:deep(.el-tree-node__content) {
+  height: 33px;
+}
+
+.ms-api-buttion {
+  width: 30px;
+}
+
+</style>

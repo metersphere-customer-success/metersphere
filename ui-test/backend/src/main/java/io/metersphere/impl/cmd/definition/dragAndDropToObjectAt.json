@@ -1,0 +1,23 @@
+{
+  "name": "dragAndDropToObjectAt",
+  "command": "dragAndDropToObjectAt",
+  "description": "Drags an element and drops it on another element.",
+  "target": "locatorOfObjectToBeDraggedWithCoords",
+  "value": "locatorOfDragDestinationObjectWithCoords",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "拖拽元素",
+  "cnDesc": "将元素从给定的定位拖拽到指定的定位",
+  "twName": "拖拽元素",
+  "twDesc": "將元素從給定的定位拖拽到指定的定位",
+  "cnType": "鼠标操作",
+  "webdriverScript": "dragAndDropToObjectAtWebDriverScript.js",
+  "cypressScript": "dragAndDropToObjectAtCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器的对象拖",
+  "targetTWName": "定位器的對象拖",
+  "valueCNName": "拖动目标物体的定位器",
+  "valueTWName": "拖動目標物體的定位器",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

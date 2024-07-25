@@ -1,0 +1,23 @@
+{
+  "name": "mouseDragAndDropAt",
+  "command": "mouseDragAndDropAt",
+  "description": "drag mouse into only one element",
+  "target": "locatorOfObjectToBeDraggedWithCoords",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "元素内部拖拽",
+  "cnDesc": "根据元素内部坐标拖拽",
+  "twName": "拖拽元素",
+  "twDesc": "將元素從給定的内部坐標定位在内部拖拽",
+  "cnType": "鼠标操作",
+  "webdriverScript": "mouseDragAndDropAtWebDriverScript.js",
+  "cypressScript": "mouseDragAndDropAtCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器的对象拖",
+  "targetTWName": "定位器的對象拖",
+  "valueCNName": "拖动目标物体的定位器",
+  "valueTWName": "拖動目標物體的定位器",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

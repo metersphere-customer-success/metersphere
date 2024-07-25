@@ -1,0 +1,20 @@
+{
+  "name": "setSpeed",
+  "description": "Set execution speed (e.g., set the millisecond length of a delay which will follow each Selenium operation). By default, there is no such delay, e.g., the delay is 0 milliseconds. This setting is global, and will affect all test runs, until changed.",
+  "target": "waitTime",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "设置回放速度",
+  "cnDesc": "设置回放速度，（会影响到整个测试用例）",
+  "twName": "設置回放速度",
+  "twDesc": "設置回放速度，（會影響到整個測試用例）",
+  "cnType": "流程控制",
+  "webdriverScript": "setSpeedWebDriverScript.js",
+  "cypressScript": "setSpeedCypressScript.js",
+  "sort": 1,
+  "targetCNName": "等待时间",
+  "targetTWName": "等待時間",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

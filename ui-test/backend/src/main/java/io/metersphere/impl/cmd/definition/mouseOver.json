@@ -1,0 +1,20 @@
+{
+  "name": "mouseOver",
+  "description": "Simulates a user hovering a mouse over the specified element.",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "鼠标悬停",
+  "cnDesc": "鼠标悬停",
+  "twName": "鼠標懸停",
+  "twDesc": "鼠標懸停",
+  "cnType": "鼠标操作",
+  "webdriverScript": "mouseOverWebDriverScript.js",
+  "cypressScript": "mouseOverCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

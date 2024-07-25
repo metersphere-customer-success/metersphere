@@ -12,6 +12,11 @@ import java.util.Map;
 @Data
 public class JmeterRunRequestDTO {
     /**
+     * selenium-server选择；
+     */
+    private String seleniumOption;
+
+    /**
      * 队列ID
      */
     private String queueId;

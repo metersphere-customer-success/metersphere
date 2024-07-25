@@ -1,0 +1,20 @@
+{
+  "name": "check",
+  "description": "Check a toggle-button (checkbox/radio).",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "elementOperation",
+  "cnName": "选中元素",
+  "cnDesc": "选中某个复选框或者单选按钮",
+  "twName": "選中元素",
+  "twDesc": "選中某個復選框或者單選按鈕",
+  "cnType": "元素操作",
+  "webdriverScript": "checkWebDriverScript.js",
+  "cypressScript": "checkCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "元素操作",
+  "component": "BaseCommand"
+}

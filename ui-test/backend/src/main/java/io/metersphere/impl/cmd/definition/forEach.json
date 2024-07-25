@@ -1,0 +1,22 @@
+{
+  "name": "forEach",
+  "description": "Create a loop that executes the proceeding commands for each item in a given collection.",
+  "target": "arrayVariableName",
+  "value": "iteratorVariableName",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "forEach",
+  "cnDesc": "循环遍历给定集合",
+  "twName": "forEach",
+  "twDesc": "循環遍歷給定集合",
+  "cnType": "流程控制",
+  "webdriverScript": "forEachWebDriverScript.js",
+  "cypressScript": "forEachCypressScript.js",
+  "sort": 1,
+  "targetCNName": "数组变量名",
+  "targetTWName": "數組變量名",
+  "valueCNName": "迭代器变量名",
+  "valueTWName": "叠代器變量名",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

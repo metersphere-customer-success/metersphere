@@ -1,0 +1,20 @@
+{
+  "name": "assertConfirmation",
+  "description": "Confirm that a confirmation has been rendered. The test will stop if the assert fails.",
+  "target": "text",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言确认框",
+  "cnDesc": "断言一个确认框被正确渲染",
+  "twName": "斷言確認框",
+  "twDesc": "斷言一個確認框被正確渲染",
+  "cnType": "校验",
+  "webdriverScript": "assertConfirmationWebDriverScript.js",
+  "cypressScript": "assertConfirmationCypressScript.js",
+  "sort": 1,
+  "targetCNName": "文本",
+  "targetTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

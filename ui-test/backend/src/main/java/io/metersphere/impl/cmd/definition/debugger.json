@@ -1,0 +1,20 @@
+{
+  "name": "debugger",
+  "description": "Breaks the execution and enters debugger",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "debug",
+  "cnDesc": "debug 当前测试用例",
+  "twName": "debug",
+  "twDesc": "debug 當前測試用例",
+  "cnType": "流程控制",
+  "webdriverScript": "debuggerWebDriverScript.js",
+  "cypressScript": "debuggerCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "submit",
+  "description": "Submit the specified form. This is particularly useful for forms without submit buttons, e.g. single-input 'Search' forms.",
+  "target": "formLocator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "elementOperation",
+  "cnName": "提交表单",
+  "cnDesc": "提交表单",
+  "twName": "提交表單",
+  "twDesc": "提交表單",
+  "cnType": "元素操作",
+  "webdriverScript": "submitWebDriverScript.js",
+  "cypressScript": "submitCypressScript.js",
+  "sort": 1,
+  "targetCNName": "操作对象",
+  "targetTWName": "操作对象",
+  "twType": "元素操作",
+  "component": "BaseCommand"
+}

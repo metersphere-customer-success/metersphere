@@ -1,0 +1,20 @@
+{
+  "name": "mouseDown",
+  "description": "Simulates a user pressing the left mouse button (without releasing it yet).",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "鼠标左击",
+  "cnDesc": "模拟一个用户按下鼠标左键而没有松开",
+  "twName": "鼠標左擊",
+  "twDesc": "模擬一個用戶按下鼠標左鍵而沒有松開",
+  "cnType": "鼠标操作",
+  "webdriverScript": "mouseDownWebDriverScript.js",
+  "cypressScript": "mouseDownCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

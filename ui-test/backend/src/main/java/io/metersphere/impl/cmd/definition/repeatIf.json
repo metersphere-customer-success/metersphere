@@ -1,0 +1,22 @@
+{
+  "name": "repeatIf",
+  "description": "Terminate a 'do' control flow branch conditionally. If the result of the provided conditional expression is true, it starts the do loop over. Otherwise it ends the loop.",
+  "target": "conditionalExpression",
+  "value": "loopLimit",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "repeatIf",
+  "cnDesc": "如果提供表达式为真，那么就启动 do loop 循环，否则终止循环",
+  "twName": "repeatIf",
+  "twDesc": "如果提供表達式為真，那麽就啟動 do loop 循環，否則終止循環",
+  "cnType": "元素操作",
+  "webdriverScript": "repeatIfWebDriverScript.js",
+  "cypressScript": "repeatIfCypressScript.js",
+  "sort": 1,
+  "targetCNName": "条件表达式",
+  "targetTWName": "條件表達式",
+  "valueCNName": "循环的限制",
+  "valueTWName": "循環的限製",
+  "twType": "元素操作",
+  "component": "BaseCommand"
+}

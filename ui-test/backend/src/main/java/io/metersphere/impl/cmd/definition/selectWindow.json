@@ -1,0 +1,20 @@
+{
+  "name": "selectWindow",
+  "description": "Selects a popup window using a window locator. Once a popup window has been selected, all commands will go to that window. Window locators use handles to select windows.",
+  "target": "handle",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "browserOperation",
+  "cnName": "选择弹出窗口",
+  "cnDesc": "从当前弹出的所有 window 选择一个",
+  "twName": "選擇彈出窗口",
+  "twDesc": "從當前彈出的所有 window 選擇一個",
+  "cnType": "浏览器操作",
+  "webdriverScript": "selectWindowWebDriverScript.js",
+  "cypressScript": "selectWindowCypressScript.js",
+  "sort": 1,
+  "targetCNName": "处理",
+  "targetTWName": "處理",
+  "twType": "瀏覽器操作",
+  "component": "BaseCommand"
+}

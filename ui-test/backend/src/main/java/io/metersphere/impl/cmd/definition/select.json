@@ -1,0 +1,22 @@
+{
+  "name": "select",
+  "description": "Select an element from a drop-down menu using an option locator. Option locators provide different ways of specifying a select element (e.g., label=, value=, id=, index=). If no option locator prefix is provided, a match on the label will be attempted.",
+  "target": "selectLocator",
+  "value": "optionLocator",
+  "type": "MsUiCommand",
+  "viewType": "elementOperation",
+  "cnName": "选择一个元素",
+  "cnDesc": "从下拉框里面选择一个元素",
+  "twName": "選擇一個元素",
+  "twDesc": "從下拉框裏面選擇一個元素",
+  "cnType": "元素操作",
+  "webdriverScript": "selectWebDriverScript.js",
+  "cypressScript": "selectCypressScript.js",
+  "sort": 1,
+  "targetCNName": "选择定位器",
+  "targetTWName": "選擇定位器",
+  "valueCNName": "选择定位器",
+  "valueTWName": "選擇定位器",
+  "twType": "元素操作",
+  "component": "BaseCommand"
+}

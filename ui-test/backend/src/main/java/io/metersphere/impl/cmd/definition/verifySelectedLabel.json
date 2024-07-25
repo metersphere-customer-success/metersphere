@@ -1,0 +1,22 @@
+{
+  "name": "verifySelectedLabel",
+  "description": "Soft assert the visible text for a selected option in the specified select element. The test will continue even if the verify fails.",
+  "target": "selectLocator",
+  "value": "text",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "验证一个标签被选择中",
+  "cnDesc": "验证一个标签被选择中，即使验证失败也不会中断测试",
+  "twName": "驗證一個標簽被選擇中",
+  "twDesc": "驗證一個標簽被選擇中，即使驗證失敗也不會中斷測試",
+  "cnType": "校验",
+  "webdriverScript": "verifySelectedLabelWebDriverScript.js",
+  "cypressScript": "verifySelectedLabelCypressScript.js",
+  "sort": 1,
+  "targetCNName": "选择定位器",
+  "targetTWName": "選擇定位器",
+  "valueCNName": "文本",
+  "valueTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

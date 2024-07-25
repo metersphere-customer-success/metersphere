@@ -1,0 +1,22 @@
+{
+  "name": "times",
+  "description": "Create a loop that executes the proceeding commands n number of times.",
+  "target": "times",
+  "value": "loopLimit",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "循环次数",
+  "cnDesc": "循环次数",
+  "twName": "循環次數",
+  "twDesc": "循環次數",
+  "cnType": "流程控制",
+  "webdriverScript": "timesWebDriverScript.js",
+  "cypressScript": "timesCypressScript.js",
+  "sort": 1,
+  "targetCNName": "次",
+  "targetTWName": "次",
+  "valueCNName": "循环的限制",
+  "valueTWName": "循環的限製",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

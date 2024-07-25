@@ -1,0 +1,22 @@
+{
+  "name": "store",
+  "description": "Save a target string as a variable for easy re-use.",
+  "target": "text",
+  "value": "variableName",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "store",
+  "cnDesc": "创建全局变量",
+  "twName": "store",
+  "twDesc": "創建全局變量",
+  "cnType": "数据提取",
+  "webdriverScript": "storeWebDriverScript.js",
+  "cypressScript": "storeCypressScript.js",
+  "sort": 1,
+  "targetCNName": "文本",
+  "targetTWName": "文本",
+  "valueCNName": "变量名",
+  "valueTWName": "變量名",
+  "twType": "數據提取",
+  "component": "BaseCommand"
+}

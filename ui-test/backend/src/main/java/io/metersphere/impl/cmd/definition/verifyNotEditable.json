@@ -1,0 +1,20 @@
+{
+  "name": "verifyNotEditable",
+  "description": "Soft assert whether the specified input element is not editable (e.g., hasn't been disabled). The test will continue even if the verify fails.",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "验证一个元素不是可编辑状态",
+  "cnDesc": "验证一个元素不是可编辑状态，即使验证失败也不会中断测试",
+  "twName": "驗證一個元素不是可編輯狀態",
+  "twDesc": "驗證一個元素不是可編輯狀態，即使驗證失敗也不會中斷測試",
+  "cnType": "校验",
+  "webdriverScript": "verifyNotEditableWebDriverScript.js",
+  "cypressScript": "verifyNotEditableCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

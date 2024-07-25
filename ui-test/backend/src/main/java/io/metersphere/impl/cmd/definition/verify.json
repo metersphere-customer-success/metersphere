@@ -1,0 +1,22 @@
+{
+  "name": "verify",
+  "description": "Soft assert that a variable is an expected value. The variable's value will be converted to a string for comparison. The test will continue even if the verify fails.",
+  "target": "variableName",
+  "value": "expectedValue",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "验证变量",
+  "cnDesc": "验证一个变量的值是给定的值，即使验证失败也不会中断测试",
+  "twName": "驗證變量",
+  "twDesc": "验证一个变量的值是给定的值，即使验证失败也不会中断测试",
+  "cnType": "校验",
+  "webdriverScript": "verifyWebDriverScript.js",
+  "cypressScript": "verifyCypressScript.js",
+  "sort": 1,
+  "targetCNName": "变量名",
+  "targetTWName": "變量名",
+  "valueCNName": "期望值",
+  "valueTWName": "期望值",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

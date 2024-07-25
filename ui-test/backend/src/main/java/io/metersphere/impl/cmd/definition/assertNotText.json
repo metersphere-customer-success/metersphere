@@ -1,0 +1,22 @@
+{
+  "name": "assertNotText",
+  "description": "Confirm that the text of an element does not contain the provided value. The test will stop if the assert fails.",
+  "target": "locator",
+  "value": "text",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言元素不包含指定文本",
+  "cnDesc": "检查一个元素不包含断言的文本值，如果不包含则成功，否则失败",
+  "twName": "斷言元素不包含指定文本",
+  "twDesc": "檢查一個元素不包含斷言的文本值，如果不包含則成功，否則失敗",
+  "cnType": "校验",
+  "webdriverScript": "assertNotTextWebDriverScript.js",
+  "cypressScript": "assertNotTextCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "文本",
+  "valueTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

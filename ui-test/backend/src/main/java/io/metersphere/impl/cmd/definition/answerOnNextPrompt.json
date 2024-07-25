@@ -1,0 +1,20 @@
+{
+  "name": "answerOnNextPrompt",
+  "description": "Affects the next alert prompt. This command will send the specified answer string to it. If the alert is already present, then use 'webdriver answer on visible prompt' instead.",
+  "target": "answer",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dialogOperation",
+  "cnName": "设置 alert 文本",
+  "cnDesc": "给诸如支持多选的元素增加一个选项",
+  "twName": "設置 alert 文本",
+  "twDesc": "給諸如支持多選的元素增加一個選項",
+  "cnType": "元素操作",
+  "webdriverScript": "answerOnNextPromptWebDriverScript.js",
+  "cypressScript": "answerOnNextPromptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "回答",
+  "targetTWName": "回答",
+  "twType": "元素操作",
+  "component": "BaseCommand"
+}

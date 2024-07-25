@@ -1,0 +1,20 @@
+{
+  "name": "close",
+  "description": "Closes the current window. There is no need to close the initial window, IDE will re-use it; closing it may cause a performance penalty on the test.",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "关闭当前窗口",
+  "cnDesc": "关闭当前的窗口",
+  "twName": "關閉當前窗口",
+  "twDesc": "關閉當前的窗口",
+  "cnType": "浏览器操作",
+  "webdriverScript": "closeWebDriverScript.js",
+  "cypressScript": "closeCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

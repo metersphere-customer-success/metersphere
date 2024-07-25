@@ -1,0 +1,20 @@
+{
+  "name": "echo",
+  "description": "Prints the specified message into the third table cell in your Selenese tables. Useful for debugging.",
+  "target": "message",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "输出",
+  "cnDesc": "输出信息到第三方表格的单元格中，对 debug 有用",
+  "twName": "輸出",
+  "twDesc": "輸出信息到第三方表格的單元格中，對 debug 有用",
+  "cnType": "流程控制",
+  "webdriverScript": "echoWebDriverScript.js",
+  "cypressScript": "echoCypressScript.js",
+  "sort": 1,
+  "targetCNName": "消息",
+  "targetTWName": "消息",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

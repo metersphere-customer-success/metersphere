@@ -1,0 +1,20 @@
+{
+  "name": "assertPrompt",
+  "description": "Confirm that a JavaScript prompt has been rendered. The test will stop if the assert fails.",
+  "target": "text",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言弹窗文本",
+  "cnDesc": "断言弹窗文本等于该值，如果相等则成功，否则失败",
+  "twName": "斷言彈窗文本",
+  "twDesc": "斷言彈窗文本等於該值，如果相等則成功，否則失敗",
+  "cnType": "校验",
+  "webdriverScript": "assertPromptWebDriverScript.js",
+  "cypressScript": "assertPromptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "文本",
+  "targetTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

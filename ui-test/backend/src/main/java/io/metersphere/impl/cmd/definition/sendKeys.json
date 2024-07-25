@@ -1,0 +1,22 @@
+{
+  "name": "sendKeys",
+  "description": "Simulates keystroke events on the specified element, as though you typed the value key-by-key. This simulates a real user typing every character in the specified string; it is also bound by the limitations of a real user, like not being able to type into a invisible or read only elements. This is useful for dynamic UI widgets (like auto-completing combo boxes) that require explicit key events. Unlike the simple 'type' command, which forces the specified value into the page directly, this command will not replace the existing content.",
+  "target": "locator",
+  "value": "keySequence",
+  "type": "MsUiCommand",
+  "viewType": "inputOperation",
+  "cnName": "输入",
+  "cnDesc": "给输入框输入内容",
+  "twName": "輸入",
+  "twDesc": "給輸入框輸入內容",
+  "cnType": "键盘操作",
+  "webdriverScript": "sendKeysWebDriverScript.js",
+  "cypressScript": "sendKeysCypressScript.js",
+  "sort": 2,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "键序列",
+  "valueTWName": "鍵序列",
+  "twType": "鍵盤操作",
+  "component": "BaseCommand"
+}

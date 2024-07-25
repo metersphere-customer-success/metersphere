@@ -1,0 +1,22 @@
+{
+  "name": "setCookie",
+  "description": "set all cookie",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "设置cookie",
+  "cnDesc": "设置cookie",
+  "twName": "设置cookie",
+  "twDesc": "设置cookie",
+  "cnType": "设置",
+  "webdriverScript": "setCookieWebDriverScript.js",
+  "cypressScript": "setCookieCypressScript.js",
+  "sort": 1,
+  "targetCNName": "",
+  "targetTWName": "",
+  "valueCNName": "",
+  "valueTWName": "",
+  "twType": "执行脚本",
+  "component": "BaseCommand"
+}

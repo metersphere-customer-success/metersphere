@@ -1,0 +1,22 @@
+{
+  "name": "waitForElementNotVisible",
+  "description": "Wait for a target element to not be visible on the page.",
+  "target": "locator",
+  "value": "waitTime",
+  "type": "MsUiCommand",
+  "viewType": "elementOperation",
+  "cnName": "等待元素不显示",
+  "cnDesc": "等待元素不显示",
+  "twName": "等待元素不顯示",
+  "twDesc": "等待元素不顯示",
+  "cnType": "校验",
+  "webdriverScript": "waitForElementNotVisibleWebDriverScript.js",
+  "cypressScript": "waitForElementNotVisibleCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "等待时间",
+  "valueTWName": "等待時間",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

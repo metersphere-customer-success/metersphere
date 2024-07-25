@@ -1,0 +1,23 @@
+<config>
+    <input>
+        <jar in="../../*.jar" out="../../*.jar"/>
+    </input>
+
+    <classpath>
+        <jar name="../../lib/*.jar"/>
+    </classpath>
+
+    <ignore-classes>
+        <class template="class regex:io.metersphere.*.*Controller"/>
+        <class template="class org.*"/>
+    </ignore-classes>
+
+    <keep-names>
+        <class template="class io.metersphere.*" access="private+">
+            <field access="private+"/>
+            <method access="protected+"/>
+        </class>
+    </keep-names>
+
+    <property name="log-file" value="log.xml"/>
+</config>

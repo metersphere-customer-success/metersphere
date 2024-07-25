@@ -8,6 +8,8 @@ import java.io.Serializable;
 public class ApiExecutionQueueDetail implements Serializable {
     private String id;
 
+    private String driverConfig;
+
     private String queueId;
 
     private Integer sort;

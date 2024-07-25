@@ -1,0 +1,22 @@
+{
+  "name": "executeAsyncScript",
+  "description": "Executes an async snippet of JavaScript in the context of the currently selected frame or window. The script fragment will be executed as the body of an anonymous function and must return a Promise. The Promise result will be saved on the variable if you use the 'return' keyword.",
+  "target": "script",
+  "value": "variableName",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "执行异步脚本",
+  "cnDesc": "在当前选中 frame 或者 window 中执行一段异步 JavaScript 代码，如果你使用 'return' 命令将可以获取这个返回值",
+  "twName": "執行异步腳本",
+  "twDesc": "在當前選中 frame 或者 window 中執行一段异步 JavaScript 代碼，如果你使用 'return' 命令將可以獲取這個返回值",
+  "cnType": "流程控制",
+  "webdriverScript": "executeAsyncScriptWebDriverScript.js",
+  "cypressScript": "executeAsyncScriptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "脚本",
+  "targetTWName": "腳本",
+  "valueCNName": "变量名",
+  "valueTWName": "變量名",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

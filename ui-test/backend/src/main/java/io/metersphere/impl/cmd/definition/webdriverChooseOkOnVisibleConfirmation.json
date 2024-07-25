@@ -1,0 +1,20 @@
+{
+  "name": "webdriverChooseOkOnVisibleConfirmation",
+  "description": "Affects a currently showing confirmation alert. This command instructs Selenium to accept it. If the alert has not appeared yet then use 'choose ok on next confirmation' instead.",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dialogOperation",
+  "cnName": "确认对话框选择确定",
+  "cnDesc": "确认对话框选择确定",
+  "twName": "確認對話框選擇確定",
+  "twDesc": "確認對話框選擇確定",
+  "cnType": "对话框操作",
+  "webdriverScript": "webdriverChooseOkOnVisibleConfirmationWebDriverScript.js",
+  "cypressScript": "webdriverChooseOkOnVisibleConfirmationCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "對話框操作",
+  "component": "BaseCommand"
+}

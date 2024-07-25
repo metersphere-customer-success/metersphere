@@ -1,0 +1,23 @@
+{
+  "name": "fileUpload",
+  "description": "File upload",
+  "target": "locator",
+  "value": "keySequence",
+  "type": "MsUiCommand",
+  "viewType": "inputOperation",
+  "cnName": "文件上传",
+  "cnDesc": "文件上传",
+  "twName": "文件上傳",
+  "twDesc": "文件上傳",
+  "cnType": "键盘操作",
+  "webdriverScript": "fileUploadWebDriverScript.js",
+  "cypressScript": "fileUploadCypressScript.js",
+  "sort": 2,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "键序列",
+  "valueTWName": "鍵序列",
+  "twType": "鍵盤操作",
+  "component": "BaseCommand",
+  "export": false
+}

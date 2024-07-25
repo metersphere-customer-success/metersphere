@@ -1,0 +1,21 @@
+{
+  "name": "screenshot",
+  "command": "screenshot",
+  "description": "Screenshot operation.",
+  "target": "text",
+  "value": "text",
+  "type": "MsUiCommand",
+  "viewType": "inputOperation",
+  "cnName": "截图",
+  "cnDesc": "截图",
+  "twName": "截圖",
+  "twDesc": "截圖操作",
+  "cnType": "截图",
+  "webdriverScript": "screenshotWebDriverScript.js",
+  "cypressScript": "screenshotCypressScript.js",
+  "sort": 1,
+  "targetCNName": "截图操作",
+  "targetTWName": "截圖操作",
+  "twType": "截圖操作",
+  "component": "BaseCommand"
+}

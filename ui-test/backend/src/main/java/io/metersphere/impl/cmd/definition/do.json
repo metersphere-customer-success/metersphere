@@ -1,0 +1,20 @@
+{
+  "name": "do",
+  "description": "Create a loop that executes the proceeding commands at least once. Terminate the branch with the repeat if command.",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "do",
+  "cnDesc": "创建一个 do while 循环",
+  "twName": "do",
+  "twDesc": "創建一個 do while 循環",
+  "cnType": "流程控制",
+  "webdriverScript": "doWebDriverScript.js",
+  "cypressScript": "doCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "storeAttribute",
+  "description": "Gets the value of an element attribute. The value of the attribute may differ across browsers (this is the case for the 'style' attribute, for example).",
+  "target": "attributeLocator",
+  "value": "variableName",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "提取元素属性",
+  "cnDesc": "提取元素属性并保存在变量中",
+  "twName": "提取元素屬性",
+  "twDesc": "提取元素屬性並保存在變量中",
+  "cnType": "数据提取",
+  "webdriverScript": "storeAttributeWebDriverScript.js",
+  "cypressScript": "storeAttributeCypressScript.js",
+  "sort": 1,
+  "targetCNName": "属性定位器",
+  "targetTWName": "屬性定位器",
+  "valueCNName": "变量名",
+  "valueTWName": "變量名",
+  "twType": "數據提取",
+  "component": "BaseCommand"
+}

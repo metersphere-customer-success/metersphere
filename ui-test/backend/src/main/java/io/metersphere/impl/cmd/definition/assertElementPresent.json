@@ -1,0 +1,20 @@
+{
+  "name": "assertElementPresent",
+  "description": "Confirm that the target element is present somewhere on the page. The test will stop if the assert fails.",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言元素存在",
+  "cnDesc": "检查一个元素被正确的渲染，如果存在则成功，否则失败",
+  "twName": "斷言元素存在",
+  "twDesc": "檢查一個元素被正確的渲染，如果存在則成功，否則失敗",
+  "cnType": "校验",
+  "webdriverScript": "assertElementPresentWebDriverScript.js",
+  "cypressScript": "assertElementPresentCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

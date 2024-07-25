@@ -1,0 +1,20 @@
+{
+  "name": "chooseCancelOnNextPrompt",
+  "description": "Affects the next alert prompt. This command will cancel it. If the alert is already present, then use 'webdriver choose cancel on visible prompt' instead.",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dialogOperation",
+  "cnName": "取消弹窗",
+  "cnDesc": "下一次输入提示框选择取消按钮，如果输入提示框已经存在，则使用 指令'webdriver choose cancel on visible prompt'替代",
+  "twName": "取消彈窗",
+  "twDesc": "下一次輸入提示框選擇取消按鈕，如果輸入提示框已經存在，則使用 指令'webdriver choose cancel on visible prompt'替代",
+  "cnType": "对话框操作",
+  "webdriverScript": "chooseCancelOnNextPromptWebDriverScript.js",
+  "cypressScript": "chooseCancelOnNextPromptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "對話框操作",
+  "component": "BaseCommand"
+}

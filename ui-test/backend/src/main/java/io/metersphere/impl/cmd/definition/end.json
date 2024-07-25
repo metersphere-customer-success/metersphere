@@ -1,0 +1,20 @@
+{
+  "name": "end",
+  "description": "Terminates a control flow block for if, while, and times.",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "end",
+  "cnDesc": "终止一个控制流，对 if, while, 循环都有效",
+  "twName": "end",
+  "twDesc": "終止一個控製流，對 if, while, 循環都有效",
+  "cnType": "流程控制",
+  "webdriverScript": "endWebDriverScript.js",
+  "cypressScript": "endCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

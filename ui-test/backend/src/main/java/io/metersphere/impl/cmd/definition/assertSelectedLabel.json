@@ -1,0 +1,22 @@
+{
+  "name": "assertSelectedLabel",
+  "description": "Confirm that the label of the selected option in a dropdown element contains the provided value. The test will stop if the assert fails.",
+  "target": "selectLocator",
+  "value": "text",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言下拉框选中该项",
+  "cnDesc": "检查下拉框是否选中了该项，如果项目选中则成功，否则失败",
+  "twName": "斷言下拉框選中該項",
+  "twDesc": "檢查下拉框是否選中了該項，如果項目選中則成功，否則失敗",
+  "cnType": "校验",
+  "webdriverScript": "assertSelectedLabelWebDriverScript.js",
+  "cypressScript": "assertSelectedLabelCypressScript.js",
+  "sort": 1,
+  "targetCNName": "选择定位器",
+  "targetTWName": "選擇定位器",
+  "valueCNName": "文本",
+  "valueTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

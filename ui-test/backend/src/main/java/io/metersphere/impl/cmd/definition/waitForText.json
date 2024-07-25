@@ -1,0 +1,22 @@
+{
+  "name": "waitForText",
+  "description": "Wait for the text of an element to be equal to the value.",
+  "target": "locator",
+  "value": "text",
+  "type": "MsUiCommand",
+  "viewType": "elementOperation",
+  "cnName": "等待文本值等于给定值",
+  "cnDesc": "等待文本值等于给定值",
+  "twName": "等待文本值等於給定值",
+  "twDesc": "等待文本值等於給定值",
+  "cnType": "校验",
+  "webdriverScript": "waitForTextWebDriverScript.js",
+  "cypressScript": "waitForTextCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "文本",
+  "valueTWName": "文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mouseUpAt",
+  "description": "Simulates the event that occurs when the user releases the mouse button (e.g., stops holding the button down) at the specified location.",
+  "target": "locator",
+  "value": "coord",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "模拟用户在某个元素的坐标上释放鼠标",
+  "cnDesc": "模拟用户在某个元素的坐标上释放鼠标",
+  "twName": "模擬用戶在某個元素的坐標上釋放鼠標",
+  "twDesc": "模擬用戶在某個元素的坐標上釋放鼠標",
+  "cnType": "鼠标操作",
+  "webdriverScript": "mouseUpAtWebDriverScript.js",
+  "cypressScript": "mouseUpAtCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "coord",
+  "valueTWName": "coord",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

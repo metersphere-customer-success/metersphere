@@ -1,0 +1,20 @@
+{
+  "name": "pause",
+  "description": "Wait for the specified amount of time.",
+  "target": "waitTime",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "暂停",
+  "cnDesc": "暂停设置的时间",
+  "twName": "暫停",
+  "twDesc": "暫停設置的時間",
+  "cnType": "流程控制",
+  "webdriverScript": "pauseWebDriverScript.js",
+  "cypressScript": "pauseCypressScript.js",
+  "sort": 1,
+  "targetCNName": "等待时间",
+  "targetTWName": "等待時間",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

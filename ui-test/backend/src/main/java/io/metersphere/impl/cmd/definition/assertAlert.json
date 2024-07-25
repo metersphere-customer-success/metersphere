@@ -1,0 +1,20 @@
+{
+  "name": "assertAlert",
+  "description": "Confirm that an alert has been rendered with the provided text. The test will stop if the assert fails.",
+  "target": "alertText",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "断言警告框",
+  "cnDesc": "确认警告框按照给定文本正确渲染",
+  "twName": "斷言警告框",
+  "twDesc": "確認警告框按照給定文本正確渲染",
+  "cnType": "校验",
+  "webdriverScript": "assertAlertWebDriverScript.js",
+  "cypressScript": "assertAlertCypressScript.js",
+  "sort": 1,
+  "targetCNName": "警告文本",
+  "targetTWName": "警告文本",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

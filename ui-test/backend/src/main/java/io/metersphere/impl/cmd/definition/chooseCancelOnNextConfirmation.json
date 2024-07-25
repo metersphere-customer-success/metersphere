@@ -1,0 +1,20 @@
+{
+  "name": "chooseCancelOnNextConfirmation",
+  "description": "Affects the next confirmation alert. This command will cancel it. If the alert is already present, then use 'webdriver choose cancel on visible confirmation' instead.",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dialogOperation",
+  "cnName": "取消弹窗",
+  "cnDesc": "下一次alert警告弹出框选择取消按钮，如果警告框已经存在，则使用 指令'webdriver choose cancel on visible confirmation'替代",
+  "twName": "取消彈窗",
+  "twDesc": "下一次alert警告彈出框選擇取消按鈕，如果警告框已經存在，則使用 指令'webdriver choose cancel on visible confirmation'替代",
+  "cnType": "对话框操作",
+  "webdriverScript": "chooseCancelOnNextConfirmationWebDriverScript.js",
+  "cypressScript": "chooseCancelOnNextConfirmationCypressScript.js",
+  "sort": 1,
+  "targetCNName": "未定义的",
+  "targetTWName": "未定義的",
+  "twType": "對話框操作",
+  "component": "BaseCommand"
+}

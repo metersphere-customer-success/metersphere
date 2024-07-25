@@ -8,6 +8,7 @@ import java.util.Map;
 @Data
 public class RunModeConfigDTO {
     private String mode;
+    private String driverConfig;
     private String reportType;
     private String reportName;
     private String reportId;

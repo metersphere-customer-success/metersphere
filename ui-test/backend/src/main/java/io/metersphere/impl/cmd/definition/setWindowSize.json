@@ -1,0 +1,20 @@
+{
+  "name": "setWindowSize",
+  "description": "Set the browser's window size, including the browser's interface.",
+  "target": "resolution",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "browserOperation",
+  "cnName": "设置窗口大小",
+  "cnDesc": "设置浏览器窗口的大小",
+  "twName": "設置窗口大小",
+  "twDesc": "設置瀏覽器窗口的大小",
+  "cnType": "浏览器操作",
+  "webdriverScript": "setWindowSizeWebDriverScript.js",
+  "cypressScript": "setWindowSizeCypressScript.js",
+  "sort": 1,
+  "targetCNName": "分辨率",
+  "targetTWName": "分辨率",
+  "twType": "瀏覽器操作",
+  "component": "BaseCommand"
+}

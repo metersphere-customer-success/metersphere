@@ -1,0 +1,22 @@
+{
+  "name": "getCookie",
+  "description": "get all cookie",
+  "target": "",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "提取cookie",
+  "cnDesc": "提取cookie",
+  "twName": "提取cookie",
+  "twDesc": "提取cookie",
+  "cnType": "树提取",
+  "webdriverScript": "getCookieWebDriverScript.js",
+  "cypressScript": "getCookieCypressScript.js",
+  "sort": 1,
+  "targetCNName": "",
+  "targetTWName": "",
+  "valueCNName": "",
+  "valueTWName": "",
+  "twType": "数据提取",
+  "component": "BaseCommand"
+}

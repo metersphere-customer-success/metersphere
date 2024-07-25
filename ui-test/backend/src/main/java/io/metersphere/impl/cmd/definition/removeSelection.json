@@ -1,0 +1,22 @@
+{
+  "name": "removeSelection",
+  "description": "Remove a selection from the set of selected options in a multi-select element using an option locator. Option locators provide different ways of specifying a select element (e.g., label=, value=, id=, index=)",
+  "target": "locator",
+  "value": "optionLocator",
+  "type": "MsUiCommand",
+  "viewType": "elementOperation",
+  "cnName": "取消选项",
+  "cnDesc": "给下拉选择框移除某个选项",
+  "twName": "取消選項",
+  "twDesc": "給下拉選擇框移除某個選項",
+  "cnType": "元素操作",
+  "webdriverScript": "removeSelectionWebDriverScript.js",
+  "cypressScript": "removeSelectionCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "选择定位器",
+  "valueTWName": "選擇定位器",
+  "twType": "元素操作",
+  "component": "BaseCommand"
+}

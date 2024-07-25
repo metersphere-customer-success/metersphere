@@ -1,0 +1,20 @@
+{
+  "name": "storeWindowHandle",
+  "description": "Gets the handle of the current page.",
+  "target": "handle",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "提取窗口 Handle",
+  "cnDesc": "提取当前页面的句柄",
+  "twName": "提取窗口 Handle",
+  "twDesc": "提取當前頁面的句柄",
+  "cnType": "数据提取",
+  "webdriverScript": "storeWindowHandleWebDriverScript.js",
+  "cypressScript": "storeWindowHandleCypressScript.js",
+  "sort": 1,
+  "targetCNName": "处理",
+  "targetTWName": "處理",
+  "twType": "數據提取",
+  "component": "BaseCommand"
+}

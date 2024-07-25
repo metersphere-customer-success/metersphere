@@ -1,0 +1,20 @@
+{
+  "name": "verifyNotChecked",
+  "description": "Soft assert that a toggle-button (checkbox/radio) has not been checked. The test will continue even if the verify fails.",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "validation",
+  "cnName": "验证一个元素未被选中",
+  "cnDesc": "验证一个元素未被选中，即使验证失败也不会中断测试",
+  "twName": "驗證一個元素未被選中",
+  "twDesc": "驗證一個元素未被選中，即使驗證失敗也不會中斷測試",
+  "cnType": "校验",
+  "webdriverScript": "verifyNotCheckedWebDriverScript.js",
+  "cypressScript": "verifyNotCheckedCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "校驗",
+  "component": "BaseCommand"
+}

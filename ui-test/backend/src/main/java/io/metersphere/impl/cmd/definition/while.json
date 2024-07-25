@@ -1,0 +1,22 @@
+{
+  "name": "while",
+  "description": "Create a loop that executes the proceeding commands repeatedly for as long as the provided conditional expression is true.",
+  "target": "conditionalExpression",
+  "value": "loopLimit",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "创建 while 循环",
+  "cnDesc": "创建 while 循环",
+  "twName": "創建 while 循環",
+  "twDesc": "創建 while 循環",
+  "cnType": "对话框操作",
+  "webdriverScript": "whileWebDriverScript.js",
+  "cypressScript": "whileCypressScript.js",
+  "sort": 1,
+  "targetCNName": "条件表达式",
+  "targetTWName": "條件表達式",
+  "valueCNName": "循环的限制",
+  "valueTWName": "循環的限製",
+  "twType": "對話框操作",
+  "component": "BaseCommand"
+}

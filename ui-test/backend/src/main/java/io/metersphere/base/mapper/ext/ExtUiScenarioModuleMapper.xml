@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.metersphere.base.mapper.ext.ExtUiScenarioModuleMapper">
+    <select id="getNodeTreeByProjectId" resultType="io.metersphere.dto.UiScenarioModuleDTO">
+        select
+        <include refid="io.metersphere.base.mapper.UiScenarioModuleMapper.Base_Column_List"/>
+        from ui_scenario_module
+        where ui_scenario_module.project_id = #{projectId}
+        order by ui_scenario_module.pos asc
+    </select>
+
+    <update id="updatePos">
+        update ui_scenario_module set pos = #{pos} where id = #{id}
+    </update>
+</mapper>

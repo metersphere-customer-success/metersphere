@@ -1,0 +1,22 @@
+{
+  "name": "storeTitle",
+  "description": "Gets the title of the current page.",
+  "target": "text",
+  "value": "variableName",
+  "type": "MsUiCommand",
+  "viewType": "dataExtraction",
+  "cnName": "storeTitle",
+  "cnDesc": "提取标题",
+  "twName": "storeTitle",
+  "twDesc": "提取標題",
+  "cnType": "数据提取",
+  "webdriverScript": "storeTitleWebDriverScript.js",
+  "cypressScript": "storeTitleCypressScript.js",
+  "sort": 1,
+  "targetCNName": "文本",
+  "targetTWName": "文本",
+  "valueCNName": "变量名",
+  "valueTWName": "變量名",
+  "twType": "數據提取",
+  "component": "BaseCommand"
+}

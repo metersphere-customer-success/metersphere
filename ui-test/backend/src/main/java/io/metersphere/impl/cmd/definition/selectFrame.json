@@ -1,0 +1,20 @@
+{
+  "name": "selectFrame",
+  "description": "Selects a frame within the current window. You can select a frame by its 0-based index number (e.g., select the first frame with 'index=0', or the third frame with 'index=2'). For nested frames you will need to invoke this command multiple times (once for each frame in the tree until you reach your desired frame). You can select the parent frame with 'relative=parent'. To return to the top of the page use 'relative=top'.",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "browserOperation",
+  "cnName": "选择内嵌网页",
+  "cnDesc": "从当前 window 选择 frame",
+  "twName": "選擇內嵌網頁",
+  "twDesc": "從當前 window 選擇 frame",
+  "cnType": "浏览器操作",
+  "webdriverScript": "selectFrameWebDriverScript.js",
+  "cypressScript": "selectFrameCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "瀏覽器操作",
+  "component": "BaseCommand"
+}

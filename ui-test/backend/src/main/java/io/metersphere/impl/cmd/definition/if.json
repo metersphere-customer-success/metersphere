@@ -1,0 +1,20 @@
+{
+  "name": "if",
+  "description": "Create a conditional branch in your test. Terminate the branch with the end command.",
+  "target": "conditionalExpression",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "if",
+  "cnDesc": "给当前测试创建一个条件分支",
+  "twName": "if",
+  "twDesc": "給當前測試創建一個條件分支",
+  "cnType": "流程控制",
+  "webdriverScript": "ifWebDriverScript.js",
+  "cypressScript": "ifCypressScript.js",
+  "sort": 1,
+  "targetCNName": "条件表达式",
+  "targetTWName": "條件表達式",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

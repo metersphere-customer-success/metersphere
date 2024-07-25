@@ -1,0 +1,20 @@
+{
+  "name": "open",
+  "description": "Opens a URL and waits for the page to load before proceeding. This accepts both relative and absolute URLs.",
+  "target": "url",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "browserOperation",
+  "cnName": "打开网页",
+  "cnDesc": "根据 URL 打开网页",
+  "twName": "打開網頁",
+  "twDesc": "根據 URL 打開網頁",
+  "cnType": "浏览器操作",
+  "webdriverScript": "openWebDriverScript.js",
+  "cypressScript": "openCypressScript.js",
+  "sort": 2,
+  "targetCNName": "网址",
+  "targetTWName": "網址",
+  "twType": "瀏覽器操作",
+  "component": "BaseCommand"
+}

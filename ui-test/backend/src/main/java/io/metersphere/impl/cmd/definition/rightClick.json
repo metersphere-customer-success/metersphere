@@ -1,0 +1,21 @@
+{
+  "name": "rightClick",
+  "command": "rightClick",
+  "description": "Right clicks on a target element (e.g., a link, button, checkbox, or radio button).",
+  "target": "locator",
+  "value": "",
+  "type": "MsUiCommand",
+  "viewType": "mouseOperation",
+  "cnName": "右击元素",
+  "cnDesc": "右击一个目标元素，例如(link, button, checkbox, radio button)",
+  "twName": "右擊元素",
+  "twDesc": "右擊一個目標元素，例如(link, button, checkbox, radio button)",
+  "cnType": "鼠标操作",
+  "webdriverScript": "rightClickWebDriverScript.js",
+  "cypressScript": "rightClickCypressScript.js",
+  "sort": 2,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "twType": "鼠標操作",
+  "component": "BaseCommand"
+}

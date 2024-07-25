@@ -1,0 +1,22 @@
+{
+  "name": "type",
+  "description": "Sets the value of an input field, as though you typed it in. Can also be used to set the value of combo boxes, check boxes, etc. In these cases, value should be the value of the option selected, not the visible text. Chrome only: If a file path is given it will be uploaded to the input (for type=file), NOTE: XPath locators are not supported.",
+  "target": "locator",
+  "value": "value",
+  "type": "MsUiCommand",
+  "viewType": "inputOperation",
+  "cnName": "输入",
+  "cnDesc": "设置 input 的 value",
+  "twName": "輸入",
+  "twDesc": "設置 input 的 value",
+  "cnType": "键盘操作",
+  "webdriverScript": "typeWebDriverScript.js",
+  "cypressScript": "typeCypressScript.js",
+  "sort": 1,
+  "targetCNName": "定位器",
+  "targetTWName": "定位器",
+  "valueCNName": "参数值",
+  "valueTWName": "參數值",
+  "twType": "鍵盤操作",
+  "component": "BaseCommand"
+}

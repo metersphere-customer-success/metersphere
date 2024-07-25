@@ -1,0 +1,22 @@
+{
+  "name": "executeScript",
+  "description": "Executes a snippet of JavaScript in the context of the currently selected frame or window. The script fragment will be executed as the body of an anonymous function. To store the return value, use the 'return' keyword and provide a variable name in the value input field.",
+  "target": "script",
+  "value": "variableName",
+  "type": "MsUiCommand",
+  "viewType": "programController",
+  "cnName": "执行脚本",
+  "cnDesc": "在当前选中 frame 或者 window 中执行一段 JavaScript 代码",
+  "twName": "執行腳本",
+  "twDesc": "在當前選中 frame 或者 window 中執行一段 JavaScript 代碼",
+  "cnType": "流程控制",
+  "webdriverScript": "executeScriptWebDriverScript.js",
+  "cypressScript": "executeScriptCypressScript.js",
+  "sort": 1,
+  "targetCNName": "脚本",
+  "targetTWName": "腳本",
+  "valueCNName": "变量名",
+  "valueTWName": "變量名",
+  "twType": "流程控製",
+  "component": "BaseCommand"
+}

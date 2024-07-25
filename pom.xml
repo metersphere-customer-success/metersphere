@@ -102,6 +102,7 @@
         <module>project-management</module>
         <module>report-stat</module>
         <module>system-setting</module>
+        <module>ui-test</module>
         <module>test-track</module>
         <module>workstation</module>
     </modules>
