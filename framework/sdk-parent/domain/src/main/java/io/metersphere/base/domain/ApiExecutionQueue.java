@@ -16,6 +16,8 @@ public class ApiExecutionQueue implements Serializable {
 
     private String poolId;
 
+    private String uiDriver;
+
     private Long createTime;
 
     private Boolean failure;

@@ -148,6 +148,13 @@ public class UiGenerateHashTreeUtil {
         List<KeyValue> headers = new ArrayList<>();
         headers.add(new KeyValue("scenarioName", item.getName()));
         config.setHeaders(headers);
+
+        if(runRequest.getSeleniumOption()!=null){
+            if(runRequest.getSeleniumOption().equals("persion")){
+                config.setRunLocal(true);
+            }
+        }
+
         testPlan.toHashTree(jmeterHashTree, testPlan.getHashTree(), config);
         return jmeterHashTree;
     }

@@ -368,7 +368,10 @@ public class UiScenarioExecuteService {
         {
             Thread.currentThread().setName("SCENARIO-PARALLEL-THREAD");
             if (isSerial(request)) {
-                uiScenarioSerialService.serial(executionQueue, executionQueue.getDetail());
+                RunModeConfigDTO config = request.getConfig();
+                ApiExecutionQueueDetail detail = executionQueue.getDetail();
+                executionQueue.setUiDriver(config.getDriverConfig());
+                uiScenarioSerialService.serial(executionQueue, detail);
             } else {
                 uiScenarioParallelService.parallel(executeQueue, request, finalSerialReportId, executionQueue);
             }

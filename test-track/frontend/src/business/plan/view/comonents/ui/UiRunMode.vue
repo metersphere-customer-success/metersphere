@@ -73,7 +73,7 @@
             <span v-if="runConfig.retryEnable">
               <el-tooltip placement="top" style="margin: 0 4px 0 2px">
                 <div slot="content">{{ $t("run_mode.retry_message") }}</div>
-                <i class="el-icon-question" style="cursor: pointer" />
+                <i class="el-icon-question" style="cursor: pointer"/>
               </el-tooltip>
               <span style="margin-left: 10px">
                 {{ $t("run_mode.retry") }}
@@ -98,6 +98,14 @@
             <el-checkbox v-model="runConfig.onSampleError">
               {{ $t("api_test.fail_to_stop") }}
             </el-checkbox>
+          </div>
+          <!-- selenium-server选择 -->
+          <div>
+            <div class="mode-row"><span><br></span>执行选择：</div><span><br></span>
+            <el-radio-group v-model="runConfig.driverConfig">
+              <el-radio label="system">后端执行</el-radio>
+              <el-radio label="persion">本地执行</el-radio>
+            </el-radio-group>
           </div>
         </div>
       </div>
@@ -112,30 +120,31 @@
           <div class="sub-item-row">
             <el-radio-group v-model="runConfig.reportType">
               <el-radio label="iddReport"
-                >{{ $t("run_mode.idd_report") }}
+              >{{ $t("run_mode.idd_report") }}
               </el-radio>
               <el-radio label="setReport"
-                >{{ $t("run_mode.set_report") }}
+              >{{ $t("run_mode.set_report") }}
               </el-radio>
             </el-radio-group>
           </div>
-          <div class="sub-item-row row-padding">
-            <el-checkbox v-model="runConfig.headlessEnabled">
-              {{ $t("ui.performance_mode") }}
-            </el-checkbox>
-          </div>
+        </div>
+        <div class="sub-item-row row-padding">
+          <el-checkbox v-model="runConfig.headlessEnabled">
+            {{ $t("ui.performance_mode") }}
+          </el-checkbox>
+        </div>
 
-          <div class="mode-row row-padding">
-            <el-checkbox
-              v-model="runConfig.retryEnable"
-              class="ms-failure-div-right"
-            >
-              {{ $t("run_mode.retry_on_failure") }}
-            </el-checkbox>
-            <span v-if="runConfig.retryEnable">
+        <div class="mode-row row-padding">
+          <el-checkbox
+            v-model="runConfig.retryEnable"
+            class="ms-failure-div-right"
+          >
+            {{ $t("run_mode.retry_on_failure") }}
+          </el-checkbox>
+          <span v-if="runConfig.retryEnable">
               <el-tooltip placement="top" style="margin: 0 4px 0 2px">
                 <div slot="content">{{ $t("run_mode.retry_message") }}</div>
-                <i class="el-icon-question" style="cursor: pointer" />
+                <i class="el-icon-question" style="cursor: pointer"/>
               </el-tooltip>
               <span style="margin-left: 10px">
                 {{ $t("run_mode.retry") }}
@@ -151,38 +160,37 @@
                 {{ $t("run_mode.retry_frequency") }}
               </span>
             </span>
-          </div>
-
-          <div
-            class="sub-item-row row-padding"
-            v-if="runConfig.mode == 'serial'"
-          >
-            <el-checkbox v-model="runConfig.onSampleError">
-              {{ $t("api_test.fail_to_stop") }}
-            </el-checkbox>
-          </div>
         </div>
-      </div>
 
-      <!-- 报告名称 -->
-      <div
-        class="report-name-row wrap"
-        v-if="runConfig.reportType === 'setReport'"
-      >
-        <div class="title">{{ $t("run_mode.report_name") }}：</div>
-        <div class="content">
-          <el-input
-            v-model="runConfig.reportName"
-            :placeholder="$t('commons.input_content')"
-            size="small"
-            style="width: 300px"
-          />
+        <div
+          class="sub-item-row row-padding"
+          v-if="runConfig.mode == 'serial'"
+        >
+          <el-checkbox v-model="runConfig.onSampleError">
+            {{ $t("api_test.fail_to_stop") }}
+          </el-checkbox>
         </div>
       </div>
     </div>
 
+    <!-- 报告名称 -->
+    <div
+      class="report-name-row wrap"
+      v-if="runConfig.reportType === 'setReport'"
+    >
+      <div class="title">{{ $t("run_mode.report_name") }}：</div>
+      <div class="content">
+        <el-input
+          v-model="runConfig.reportName"
+          :placeholder="$t('commons.input_content')"
+          size="small"
+          style="width: 300px"
+        />
+      </div>
+    </div>
+
     <template v-slot:footer>
-      <ms-dialog-footer @cancel="close" @confirm="handleRunBatch" />
+      <ms-dialog-footer @cancel="close" @confirm="handleRunBatch"/>
     </template>
   </el-dialog>
 </template>
@@ -195,11 +203,11 @@ import {
   strMapToObj,
 } from "@/business/utils/sdk-utils";
 import EnvSelectPopover from "@/business/plan/env/EnvSelectPopover";
-import { testPlanUiScenarioCaseEnv } from "@/api/remote/ui/test-plan-ui-scenario-case";
+import {testPlanUiScenarioCaseEnv} from "@/api/remote/ui/test-plan-ui-scenario-case";
 
 export default {
   name: "UiRunMode",
-  components: { MsDialogFooter, EnvSelectPopover },
+  components: {MsDialogFooter, EnvSelectPopover},
   data() {
     return {
       runModeVisible: false,
@@ -219,6 +227,7 @@ export default {
         mode: "serial",
         browser: "CHROME",
         reportType: "iddReport",
+        driverConfig: "system",
         onSampleError: false,
         runWithinResourcePool: false,
         resourcePoolId: null,
@@ -267,6 +276,7 @@ export default {
         this.runConfig = {
           mode: this.runConfig.mode,
           reportType: "iddReport",
+          driverConfig: "system",
           reportName: "",
           runWithinResourcePool: false,
           resourcePoolId: null,
@@ -279,6 +289,7 @@ export default {
       this.runConfig = {
         mode: "serial",
         reportType: "iddReport",
+        driverConfig: "system",
         reportName: "",
         browser: "CHROME",
         runWithinResourcePool: false,

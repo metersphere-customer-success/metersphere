@@ -156,6 +156,7 @@ public class UiExecutionQueueService {
         executionQueue.setReportId(reportId);
         executionQueue.setReportType(StringUtils.isNotEmpty(reportType) ? reportType : RunModeConstants.INDEPENDENCE.toString());
         executionQueue.setRunMode(runMode);
+        executionQueue.setUiDriver(config.getDriverConfig());
         return executionQueue;
     }
 

@@ -1189,6 +1189,7 @@ export default {
       param.retryEnable = config.retryEnable;
       param.retryNum = config.retryNum;
       param.browser = config.browser;
+      param.driverConfig = config.driverConfig;
       param.headlessEnabled = config.headlessEnabled;
       if (config.executionWay === "runAndSave") {
         param.executionWay = "RUN_SAVE";

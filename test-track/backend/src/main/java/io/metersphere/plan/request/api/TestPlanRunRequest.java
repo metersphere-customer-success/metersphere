@@ -11,6 +11,7 @@ import java.util.Map;
 @Setter
 public class TestPlanRunRequest {
     private String testPlanId;
+    private String driverConfig;
     private String projectId;
     private String userId;
     private String triggerMode;//触发方式

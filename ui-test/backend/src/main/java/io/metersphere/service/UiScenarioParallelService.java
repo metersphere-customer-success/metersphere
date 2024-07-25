@@ -83,6 +83,7 @@ public class UiScenarioParallelService {
         runRequest.setRunType(RunModeConstants.PARALLEL.toString());
         runRequest.setRetryNum(request.getConfig().getRetryNum());
         runRequest.setRetryEnable(request.getConfig().isRetryEnable());
+        runRequest.setSeleniumOption(request.getConfig().getDriverConfig());
         return runRequest;
     }
 }

@@ -59,6 +59,18 @@
         </div>
       </div>
 
+
+      <!-- selenium-server选择 -->
+      <div class="run-mode-row wrap" v-if="customRunMode">
+        <div class="title">执行选择：</div>
+        <div class="content">
+          <el-radio-group v-model="runConfig.driverConfig">
+            <el-radio label="system">后端执行</el-radio>
+            <el-radio label="persion">本地执行</el-radio>
+          </el-radio-group>
+        </div>
+      </div>
+
       <!-- 性能模式 用于测试报告 -->
       <div class="other-config-row wrap" v-if="customSerialOnSampleError">
         <div class="other-title title">{{ $t("run_mode.other_config") }}：</div>
@@ -228,6 +240,7 @@ export default {
         mode: "serial",
         browser: "CHROME",
         reportType: "iddReport",
+        driverConfig: "system",
         onSampleError: false,
         runWithinResourcePool: false,
         resourcePoolId: null,
@@ -280,6 +293,7 @@ export default {
         this.runConfig = {
           mode: this.runConfig.mode,
           reportType: "iddReport",
+          driverConfig: "system",
           reportName: "",
           runWithinResourcePool: false,
           resourcePoolId: null,
@@ -294,6 +308,7 @@ export default {
         reportType: "iddReport",
         reportName: "",
         browser: "CHROME",
+        driverConfig: "system",
         runWithinResourcePool: false,
         resourcePoolId: null,
         headlessEnabled: true,

@@ -7,6 +7,7 @@
     <result column="report_type" jdbcType="VARCHAR" property="reportType" />
     <result column="run_mode" jdbcType="VARCHAR" property="runMode" />
     <result column="pool_id" jdbcType="VARCHAR" property="poolId" />
+    <result column="ui_driver" jdbcType="VARCHAR" property="uiDriver" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="failure" jdbcType="BIT" property="failure" />
   </resultMap>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, report_id, report_type, run_mode, pool_id, create_time, failure
+    id, report_id, report_type, run_mode, pool_id, create_time, failure, ui_driver
   </sql>
   <select id="selectByExample" parameterType="io.metersphere.base.domain.ApiExecutionQueueExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="io.metersphere.base.domain.ApiExecutionQueue">
     insert into api_execution_queue (id, report_id, report_type, 
       run_mode, pool_id, create_time, 
-      failure)
+      failure,ui_driver)
     values (#{id,jdbcType=VARCHAR}, #{reportId,jdbcType=VARCHAR}, #{reportType,jdbcType=VARCHAR}, 
       #{runMode,jdbcType=VARCHAR}, #{poolId,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
-      #{failure,jdbcType=BIT})
+      #{failure,jdbcType=BIT},#{uiDriver,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.metersphere.base.domain.ApiExecutionQueue">
     insert into api_execution_queue
@@ -133,6 +134,9 @@
       <if test="failure != null">
         failure,
       </if>
+      <if test="uiDriver != null">
+        ui_driver,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -155,6 +159,9 @@
       </if>
       <if test="failure != null">
         #{failure,jdbcType=BIT},
+      </if>
+      <if test="uiDriver != null">
+        #{uiDriver,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.failure != null">
         failure = #{record.failure,jdbcType=BIT},
       </if>
+      <if test="record.uiDriver != null">
+        failure = #{record.uiDriver,jdbcType=BIT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -202,6 +212,7 @@
       pool_id = #{record.poolId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT},
       failure = #{record.failure,jdbcType=BIT}
+      uiDriver = #{record.uiDriver,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="failure != null">
         failure = #{failure,jdbcType=BIT},
       </if>
+      <if test="uiDriver != null">
+        ui_driver = #{uiDriver,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -238,6 +252,7 @@
       pool_id = #{poolId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       failure = #{failure,jdbcType=BIT}
+      ui_driver = #{uiDriver,jdbcType=BIT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

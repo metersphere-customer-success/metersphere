@@ -60,6 +60,7 @@ public class UiScenarioSerialService {
         updateReportToRunning(queue, runRequest);
 
         try {
+            runRequest.setSeleniumOption(executionQueue.getUiDriver());
             runRequest.setReportType(executionQueue.getReportType());
             runRequest.setPool(UiGenerateHashTreeUtil.isResourcePool(executionQueue.getPoolId()));
             runRequest.setTestPlanReportId(executionQueue.getReportId());

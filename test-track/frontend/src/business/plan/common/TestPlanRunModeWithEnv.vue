@@ -127,8 +127,16 @@
             >
               {{ $t("ui.performance_mode") }}
             </el-checkbox>
+
+            <!-- selenium-server选择 -->
+            <div class="mode-row"><span><br></span>执行选择：</div>
+            <span><br></span>
+              <el-radio-group v-model="runConfig.driverConfig">
+                <el-radio label="system">后端执行</el-radio>
+                <el-radio label="persion">本地执行</el-radio>
+              </el-radio-group>
+            </div>
           </div>
-        </div>
       </div>
     </div>
 
@@ -203,6 +211,7 @@ export default {
       defaultEnvMap: {},
       runConfig: {
         mode: "serial",
+        driverConfig: "system",
         reportType: "iddReport",
         onSampleError: false,
         resourcePoolId: null,
@@ -308,6 +317,7 @@ export default {
       }
       this.runConfig.environmentType = ENV_TYPE.JSON;
       this.runModeVisible = true;
+      // this.driverConfig = "system";
       this.testType = testType;
       this.getResourcePools();
       this.getWsProjects();

@@ -20,6 +20,8 @@ public class RunScenarioRequest {
 
     private String triggerMode;
 
+    private String driverConfig;
+
     private String executeType;
 
     private String runMode;

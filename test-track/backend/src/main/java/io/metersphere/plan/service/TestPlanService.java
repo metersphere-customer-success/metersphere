@@ -1937,6 +1937,7 @@ public class TestPlanService {
         String testPlanId = testplanRunRequest.getTestPlanId();
         RunModeConfigDTO runModeConfig = getRunModeConfigDTO(testplanRunRequest, envType, envMap, environmentGroupId, testPlanId);
         runModeConfig.setTestPlanDefaultEnvMap(testplanRunRequest.getTestPlanDefaultEnvMap());
+        runModeConfig.setDriverConfig(testplanRunRequest.getDriverConfig());
 
         //执行测试计划行为，要更新TestPlan状态为进行中，并重置实际结束时间
         updateTestPlanExecuteInfo(testPlanId, TestPlanStatus.Underway.name());
@@ -1980,6 +1981,7 @@ public class TestPlanService {
         runModeConfig.setRetryNum(testplanRunRequest.getRetryNum());
         runModeConfig.setBrowser(testplanRunRequest.getBrowser());
         runModeConfig.setHeadlessEnabled(testplanRunRequest.isHeadlessEnabled());
+        runModeConfig.setDriverConfig(testplanRunRequest.getDriverConfig());
         return runModeConfig;
     }
 
